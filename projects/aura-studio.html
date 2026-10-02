@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura Studio — Creative Agency Platform | Project by Lakshya Shah</title>
+  <meta name="description" content="Aura Studio is an award-winning creative agency platform engineered with bespoke interactions, fluid motion, and editorial design by Lakshya Shah.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0c0d11;
+      --card-bg: #14161f;
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent: #8b5cf6;
+      --accent-glow: #a855f7;
+      --accent-lime: #d4ff3f;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --radius: 24px;
+      --font-heading: 'Syne', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'Space Grotesk', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Back to Portfolio Header */
+    .top-bar {
+      background-color: #12141a;
+      border-bottom: 1px solid var(--card-border);
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+    .back-btn {
+      color: var(--accent-lime);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      transition: transform 0.2s;
+    }
+    .back-btn:hover { transform: translateX(-4px); }
+    .project-meta-pill {
+      font-family: var(--font-mono);
+      background: rgba(255,255,255,0.06);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      color: #cbd5e1;
+    }
+
+    /* Studio Header */
+    .studio-nav {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 30px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, #fff 40%, var(--accent-glow) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .studio-menu {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+    .studio-menu a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .studio-menu a:hover { color: #fff; }
+    .cta-pill {
+      background: var(--accent-lime);
+      color: #0c0d11;
+      padding: 10px 22px;
+      border-radius: 9999px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    .cta-pill:hover {
+      box-shadow: 0 0 25px rgba(212, 255, 63, 0.4);
+      transform: translateY(-2px);
+    }
+
+    /* Hero */
+    .hero {
+      max-width: 1200px;
+      margin: 40px auto 70px;
+      padding: 0 24px;
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-glow);
+      background: rgba(168, 85, 247, 0.12);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      padding: 6px 16px;
+      border-radius: 9999px;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.8rem, 6.5vw, 5.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin-bottom: 24px;
+      background: linear-gradient(180deg, #ffffff 60%, #9ca3af 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      max-width: 680px;
+      margin: 0 auto 40px;
+      font-size: 1.15rem;
+      color: var(--text-muted);
+    }
+
+    /* Showcase Visual */
+    .showcase-banner {
+      max-width: 1240px;
+      margin: 0 auto 80px;
+      padding: 0 24px;
+    }
+    .banner-card {
+      position: relative;
+      height: 520px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+    }
+    .banner-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.85);
+      transition: transform 0.6s ease;
+    }
+    .banner-card:hover .banner-img { transform: scale(1.03); }
+    .banner-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 40px;
+      background: linear-gradient(0deg, rgba(12, 13, 17, 0.95) 0%, transparent 100%);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    /* Interactive Filter Controls */
+    .filter-bar {
+      max-width: 1240px;
+      margin: 0 auto 36px;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .filter-tabs {
+      display: flex;
+      gap: 10px;
+    }
+    .filter-btn {
+      background: #141622;
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 8px 18px;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: #23273a;
+      color: #fff;
+      border-color: rgba(255,255,255,0.2);
+    }
+    .filter-btn.active {
+      color: var(--accent-lime);
+      border-color: var(--accent-lime);
+    }
+
+    /* Case Studies Grid */
+    .grid {
+      max-width: 1240px;
+      margin: 0 auto 100px;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+    .card {
+      background-color: var(--card-bg);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(168, 85, 247, 0.4);
+    }
+    .card-img-wrap {
+      height: 280px;
+      overflow: hidden;
+      position: relative;
+    }
+    .card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    .card:hover .card-img { transform: scale(1.05); }
+    .card-metric-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(8px);
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent-lime);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .card-body { padding: 28px; }
+    .card-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent-lime);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+    .card-title {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+    .card-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+
+    /* Process Stepper Section */
+    .process-section {
+      max-width: 1240px;
+      margin: 0 auto 100px;
+      padding: 0 24px;
+    }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .process-step {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .step-idx {
+      font-family: var(--font-mono);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--accent-lime);
+    }
+    .step-name {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      color: #fff;
+    }
+    .step-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Interactive Stats Bar */
+    .stats-strip {
+      background: #10121a;
+      border-top: 1px solid var(--card-border);
+      border-bottom: 1px solid var(--card-border);
+      padding: 50px 24px;
+      margin-bottom: 100px;
+    }
+    .stats-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      text-align: center;
+    }
+    .stat-val {
+      font-family: var(--font-heading);
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--accent-lime);
+      margin-bottom: 4px;
+    }
+    .stat-lbl {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 860px) {
+      .studio-menu { display: none; }
+      .grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr; }
+      .stats-container { grid-template-columns: repeat(2, 1fr); }
+      .banner-card { height: 360px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar linking back to main portfolio -->
+  <div class="top-bar">
+    <a href="../index.html#works" class="back-btn">
+      <span>&larr;</span> Back to Lakshya Shah's Portfolio
+    </a>
+    <span class="project-meta-pill">Case Study Demo: Aura Studio &bull; Creative Flagship</span>
+  </div>
+
+  <!-- Studio Header -->
+  <nav class="studio-nav">
+    <div class="logo">AURA STUDIO</div>
+    <ul class="studio-menu">
+      <li><a href="#work">Works</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#metrics">Impact</a></li>
+    </ul>
+    <a href="../index.html#contact" class="cta-pill">Collaborate with Lakshya &rarr;</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <span class="hero-badge">✦ BRAND ARCHITECTURE &amp; DIGITAL EXCELLENCE</span>
+    <h1>We build interfaces that transcend ordinary.</h1>
+    <p>A bespoke creative production studio founded at the collision of avant-garde design aesthetics, immersive 3D spatial thinking, and uncompromising frontend performance.</p>
+  </section>
+
+  <!-- Showcase Banner -->
+  <section class="showcase-banner">
+    <div class="banner-card">
+      <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1400&q=80" alt="Futuristic interactive hardware and sleek digital screens" class="banner-img">
+      <div class="banner-overlay">
+        <div>
+          <span style="font-family: var(--font-mono); color: var(--accent-lime); font-size: 0.8rem; text-transform: uppercase;">Flagship Production</span>
+          <h2 style="font-family: var(--font-heading); font-size: 2rem; margin-top: 6px;">Next-Gen Spatial Computing Interface</h2>
+        </div>
+        <a href="../index.html#contact" class="cta-pill">Explore Architecture &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Strip -->
+  <div class="stats-strip" id="metrics">
+    <div class="stats-container">
+      <div>
+        <div class="stat-val">34+</div>
+        <div class="stat-lbl">Global Awards</div>
+      </div>
+      <div>
+        <div class="stat-val">99.9%</div>
+        <div class="stat-lbl">Performance Score</div>
+      </div>
+      <div>
+        <div class="stat-val">12M+</div>
+        <div class="stat-lbl">End Users Reached</div>
+      </div>
+      <div>
+        <div class="stat-val">0.4s</div>
+        <div class="stat-lbl">Median Load Latency</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Filter Bar -->
+  <div class="filter-bar" id="work">
+    <div>
+      <h2 style="font-family: var(--font-heading); font-size: 2rem;">Selected Commissions</h2>
+      <p style="color: var(--text-muted); margin-top: 4px;">Explore works curated and engineered by Lakshya Shah</p>
+    </div>
+    <div class="filter-tabs">
+      <button class="filter-btn active" onclick="filterProjects('all', this)">All (4)</button>
+      <button class="filter-btn" onclick="filterProjects('spatial', this)">Spatial &amp; 3D</button>
+      <button class="filter-btn" onclick="filterProjects('platform', this)">Platforms</button>
+      <button class="filter-btn" onclick="filterProjects('brand', this)">Branding</button>
+    </div>
+  </div>
+
+  <!-- Projects Grid -->
+  <div class="grid" id="projectsGrid">
+    
+    <div class="card" data-category="spatial">
+      <div class="card-img-wrap">
+        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" alt="Abstract fluid 3D digital art" class="card-img">
+        <span class="card-metric-badge">+180% User Engagement</span>
+      </div>
+      <div class="card-body">
+        <div class="card-tag">Spatial &bull; 3D Motion</div>
+        <h3 class="card-title">Hyperion Spatial Identity</h3>
+        <p class="card-desc">Bespoke kinetic brand identity and web experience for an artificial intelligence research laboratory.</p>
+        <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #a855f7;">Stack: WebGL, Three.js, CSS Keyframes</span>
+      </div>
+    </div>
+
+    <div class="card" data-category="platform">
+      <div class="card-img-wrap">
+        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80" alt="Cyberpunk terminal code matrix" class="card-img">
+        <span class="card-metric-badge">Zero-Trust Certified</span>
+      </div>
+      <div class="card-body">
+        <div class="card-tag">Platform &bull; Security</div>
+        <h3 class="card-title">Cipher Zero Cryptographic OS</h3>
+        <p class="card-desc">Minimalist, zero-trust web console engineered for cryptographic asset custody and multi-signature auditing.</p>
+        <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #a855f7;">Stack: React, WebCrypto API, WebSocket</span>
+      </div>
+    </div>
+
+    <div class="card" data-category="brand">
+      <div class="card-img-wrap">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Architecture minimalism" class="card-img">
+        <span class="card-metric-badge">Awwwards Honorable Mention</span>
+      </div>
+      <div class="card-body">
+        <div class="card-tag">Branding &bull; Editorial</div>
+        <h3 class="card-title">Vesper Architecture Monograph</h3>
+        <p class="card-desc">A digital monograph and catalog raisonné showcasing brutalist architectural developments across Switzerland.</p>
+        <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #a855f7;">Stack: Next.js, Fluid Typography, Vanilla CSS</span>
+      </div>
+    </div>
+
+    <div class="card" data-category="platform">
+      <div class="card-img-wrap">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="High velocity telemetry dashboard" class="card-img">
+        <span class="card-metric-badge">60 FPS Real-time Stream</span>
+      </div>
+      <div class="card-body">
+        <div class="card-tag">Platform &bull; Telemetry</div>
+        <h3 class="card-title">Apex GPU Cluster Profiler</h3>
+        <p class="card-desc">Ultra-dense hardware telemetry cockpit rendering live tensor core utilization, heat maps, and memory bandwidth.</p>
+        <span style="font-family: var(--font-mono); font-size: 0.8rem; color: #a855f7;">Stack: Canvas API, High-Frequency Streaming</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Studio Process Section -->
+  <section class="process-section" id="process">
+    <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+      <span style="font-family: var(--font-mono); color: var(--accent-lime); font-size: 0.82rem; text-transform: uppercase;">Methodology &amp; Standards</span>
+      <h2 style="font-family: var(--font-heading); font-size: 2.2rem; margin-top: 8px;">The 4-Stage Agency Pipeline</h2>
+    </div>
+
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="step-idx">01</div>
+        <div class="step-name">Discovery</div>
+        <p class="step-desc">Deconstructing business goals, core user empathy mapping, competitive teardowns, and defining measurable KPIs.</p>
+      </div>
+
+      <div class="process-step">
+        <div class="step-idx">02</div>
+        <div class="step-name">Architecture</div>
+        <p class="step-desc">Wireframing information hierarchy, design token taxonomy, typography scales, and modular component schemas.</p>
+      </div>
+
+      <div class="process-step">
+        <div class="step-idx">03</div>
+        <div class="step-name">Art Direction</div>
+        <p class="step-desc">Translating wireframes into high-voltage aesthetic visuals, curated photography art direction, and micro-motion choreography.</p>
+      </div>
+
+      <div class="process-step">
+        <div class="step-idx">04</div>
+        <div class="step-name">Production</div>
+        <p class="step-desc">Writing semantic, framework-clean code with zero bloat, Lighthouse 98+ score optimization, and cross-browser resilience.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <footer style="text-align: center; padding: 60px 24px; border-top: 1px solid var(--card-border); background: #07080b;">
+    <p style="color: var(--text-muted); font-size: 0.9rem;">Designed and engineered by <strong style="color: #fff;">Lakshya Shah</strong></p>
+    <a href="../index.html" class="back-btn" style="margin-top: 16px;">&larr; Return to main portfolio</a>
+  </footer>
+
+  <script>
+    function filterProjects(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cards = document.querySelectorAll('#projectsGrid .card');
+      cards.forEach(card => {
+        if (cat === 'all' || card.getAttribute('data-category') === cat) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

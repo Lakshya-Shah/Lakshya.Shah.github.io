@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lakshya Shah — Creative Developer &amp; UI Designer</title>
+  <meta name="description" content="Portfolio of Lakshya Shah — Creative Developer and UI Designer crafting modern digital experiences with clarity, taste, and clean code.">
+  <meta name="keywords" content="Lakshya Shah, Portfolio, Creative Developer, UI Designer, Web Developer, Frontend Engineer">
+  <meta name="author" content="Lakshya Shah">
+
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Lakshya Shah — Creative Developer &amp; UI Designer">
+  <meta property="og:description" content="I design clarity. I build growth. Modern web experiences combining creative direction with clean code.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Subtle Film Grain Texture Overlay -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- STICKY NAVBAR -->
+  <header class="site-header" id="header">
+    <nav class="navbar container" aria-label="Main Navigation">
+      <a href="#home" class="nav-brand" aria-label="Home">
+        <span class="brand-name">Lakshya Shah</span>
+        <span class="status-indicator">
+          <span class="status-dot"></span>
+          <span class="status-text">Available</span>
+        </span>
+      </a>
+
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#works" class="nav-link">Works</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#testimonials" class="nav-link">Praise</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#contact" class="btn btn-pill btn-primary talk-btn">
+          <span>Let's Talk</span>
+          <svg class="btn-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <!-- 1. HERO SECTION -->
+    <section class="hero-section" id="home">
+      <div class="container hero-container">
+        
+        <div class="hero-meta">
+          <div class="badge-pill">
+            <span class="badge-dot"></span>
+            <span>AVAILABLE FOR SELECTIVE COMMISSIONS &bull; 2026</span>
+          </div>
+          <div class="hero-role">Web Developer &amp; UI Designer</div>
+        </div>
+
+        <h1 class="hero-headline">
+          <span class="line-1">I design clarity.</span>
+          <span class="line-2">I build growth.</span>
+        </h1>
+
+        <div class="hero-grid">
+          <!-- Left: Subtext, Social Proof & CTAs -->
+          <div class="hero-intro">
+            <p class="hero-subtext">
+              Bridging the boundary between high-impact aesthetic vision and clean, performant engineering. Crafted for ambitious brands seeking distinction over templates.
+            </p>
+
+            <div class="hero-avatars-row">
+              <div class="avatar-stack">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&h=120&q=80" alt="Client portrait 1" class="avatar-img" width="44" height="44">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&h=120&q=80" alt="Client portrait 2" class="avatar-img" width="44" height="44">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=120&h=120&q=80" alt="Client portrait 3" class="avatar-img" width="44" height="44">
+              </div>
+              <div class="avatar-text">
+                <strong>I combine creativity with clean code</strong>
+                <span>Trusted by modern founders &amp; creative leaders</span>
+              </div>
+            </div>
+
+            <div class="hero-cta-group">
+              <a href="#works" class="btn btn-pill btn-dark">
+                <span>View Selected Work</span>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <path d="M6 2.5V9.5M6 9.5L9.5 6M6 9.5L2.5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <a href="#about" class="btn btn-pill btn-outline">About My Approach</a>
+            </div>
+          </div>
+
+          <!-- Right: Visual Collage with Floating Stat Chips & Rotating Badge -->
+          <div class="hero-collage">
+            <div class="collage-main-card">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80" alt="Minimalist architectural space showcasing modern design aesthetics" class="collage-img main-img" loading="eager">
+              
+              <!-- Floating Chip 1 -->
+              <div class="stat-chip chip-years">
+                <span class="chip-number">+2</span>
+                <span class="chip-label">Years of Experience</span>
+              </div>
+            </div>
+
+            <div class="collage-secondary-card">
+              <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=700&q=80" alt="Creative workspace and interface prototyping" class="collage-img secondary-img" loading="eager">
+              
+              <!-- Floating Chip 2 -->
+              <div class="stat-chip chip-projects">
+                <span class="chip-number">+10</span>
+                <span class="chip-label">Shipped Projects</span>
+              </div>
+            </div>
+
+            <!-- Rotating Text Badge Button -->
+            <a href="#about" class="rotating-badge-wrapper" aria-label="Scroll to learn more about my philosophy">
+              <div class="rotating-badge">
+                <svg viewBox="0 0 100 100" class="badge-svg">
+                  <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
+                  <text font-size="10.8" font-family="'Space Grotesk', sans-serif" letter-spacing="2.2" fill="currentColor">
+                    <textPath href="#circlePath">
+                      • SCROLL TO EXPLORE • WORK THAT MATTERS
+                    </textPath>
+                  </text>
+                </svg>
+                <div class="badge-center-icon">
+                  <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M8 2.5V13.5M8 13.5L13 8.5M8 13.5L3 8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+            </a>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- MARQUEE TICKER STRIP -->
+    <div class="marquee-strip" aria-hidden="true">
+      <div class="marquee-track">
+        <div class="marquee-content">
+          <span>CREATIVE DIRECTION</span>
+          <span class="star">✦</span>
+          <span>UI/UX SYSTEMS</span>
+          <span class="star">✦</span>
+          <span>FULL-STACK CRAFT</span>
+          <span class="star">✦</span>
+          <span>EDITORIAL AESTHETICS</span>
+          <span class="star">✦</span>
+          <span>RESPONSIVE ARCHITECTURE</span>
+          <span class="star">✦</span>
+          <span>INTERACTION DESIGN</span>
+          <span class="star">✦</span>
+        </div>
+        <div class="marquee-content" aria-hidden="true">
+          <span>CREATIVE DIRECTION</span>
+          <span class="star">✦</span>
+          <span>UI/UX SYSTEMS</span>
+          <span class="star">✦</span>
+          <span>FULL-STACK CRAFT</span>
+          <span class="star">✦</span>
+          <span>EDITORIAL AESTHETICS</span>
+          <span class="star">✦</span>
+          <span>RESPONSIVE ARCHITECTURE</span>
+          <span class="star">✦</span>
+          <span>INTERACTION DESIGN</span>
+          <span class="star">✦</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. ABOUT STATEMENT SECTION -->
+    <section class="about-section" id="about">
+      <div class="container">
+        
+        <div class="section-label">
+          <span class="section-number">01</span>
+          <span class="section-tag">PHILOSOPHY &amp; BACKGROUND</span>
+        </div>
+
+        <div class="about-hero-quote">
+          <h2>&ldquo;Design is not decoration. It is direction.&rdquo;</h2>
+        </div>
+
+        <div class="about-content-grid">
+          <div class="about-column-left">
+            <h3 class="about-subheading">I build digital experiences that move businesses forward.</h3>
+            <p class="about-bio-lead">
+              <strong>Lakshya Shah</strong> is a Web Developer &amp; UI Designer obsessed with functional minimalism, typography, and tactile digital interactions.
+            </p>
+            <p class="about-bio-text">
+              Over the past few years, I have collaborated with ambitious founders, emerging brands, and digital teams to translate bold ideas into high-converting products. Every layout is calibrated for clarity; every line of code is structured for resilience.
+            </p>
+            <a href="#services" class="text-link-arrow">
+              <span>My Approach &amp; Capabilities</span>
+              <span class="arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+
+          <div class="about-column-right">
+            <!-- Key Stats Matrix -->
+            <div class="stats-matrix">
+              <div class="matrix-card">
+                <span class="matrix-number">100%</span>
+                <span class="matrix-label">Semantic, Framework-free Clean Code</span>
+              </div>
+              <div class="matrix-card">
+                <span class="matrix-number">&lt;0.8s</span>
+                <span class="matrix-label">Average Page Load Speed</span>
+              </div>
+              <div class="matrix-card">
+                <span class="matrix-number">99+</span>
+                <span class="matrix-label">Lighthouse Performance Standards</span>
+              </div>
+              <div class="matrix-card">
+                <span class="matrix-number">Global</span>
+                <span class="matrix-label">Remote Collaboration Worldwide</span>
+              </div>
+            </div>
+
+            <!-- Skills Pills Deck -->
+            <div class="skills-block">
+              <h4 class="skills-heading">Core Competencies:</h4>
+              <div class="skills-tags">
+                <span class="skill-tag">HTML5 / Semantic Web</span>
+                <span class="skill-tag">Modern CSS &amp; Flex/Grid</span>
+                <span class="skill-tag">Responsive Systems</span>
+                <span class="skill-tag">UI/UX Architecture</span>
+                <span class="skill-tag">Typography Direction</span>
+                <span class="skill-tag">Design Systems</span>
+                <span class="skill-tag">Figma &amp; Prototyping</span>
+                <span class="skill-tag">Web Accessibility (a11y)</span>
+                <span class="skill-tag">Performance Tuning</span>
+                <span class="skill-tag">Git &amp; Static Deployments</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3. FEATURED WORK SECTION (DIRECT LINKS TO INTERACTIVE PROJECTS) -->
+    <section class="works-section" id="works">
+      <div class="container">
+
+        <div class="works-header">
+          <div class="section-label">
+            <span class="section-number">02</span>
+            <span class="section-tag">SELECTED WORKS</span>
+          </div>
+          <div class="works-header-flex">
+            <h2 class="section-title">Case studies built with intention.</h2>
+            <p class="section-subtext">Click any project to explore its live, fully interactive showcase built by Lakshya Shah.</p>
+          </div>
+        </div>
+
+        <div class="works-grid">
+
+          <!-- Project 1: Aura Studio -->
+          <article class="project-card">
+            <a href="projects/aura-studio.html" class="project-card-link" aria-label="Explore live project: Aura Studio Platform">
+              <div class="project-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1000&q=80" alt="Futuristic interactive hardware and sleek digital screens for Aura Studio" class="project-image" loading="lazy">
+                <div class="project-overlay">
+                  <div class="project-arrow-badge" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
+                      <path d="M3.3 12.7L12.7 3.3M12.7 3.3H5.3M12.7 3.3V10.7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                </div>
+                <div class="project-tag-pill">Branding &amp; Web &bull; Live Demo</div>
+              </div>
+              <div class="project-meta">
+                <div class="project-info">
+                  <h3 class="project-title">Aura Studio Platform</h3>
+                  <p class="project-desc">A progressive creative agency flagship site with bespoke micro-interactions and editorial layouts.</p>
+                </div>
+                <div class="project-year">2025</div>
+              </div>
+            </a>
+          </article>
+
+          <!-- Project 2: Chronos Design System -->
+          <article class="project-card">
+            <a href="projects/chronos-design-system.html" class="project-card-link" aria-label="Explore live project: Chronos Design System">
+              <div class="project-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1000&q=80" alt="Clean minimal UI toolkit and tokens for Chronos Design System" class="project-image" loading="lazy">
+                <div class="project-overlay">
+                  <div class="project-arrow-badge" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
+                      <path d="M3.3 12.7L12.7 3.3M12.7 3.3H5.3M12.7 3.3V10.7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                </div>
+                <div class="project-tag-pill">Design Tokens &bull; Interactive</div>
+              </div>
+              <div class="project-meta">
+                <div class="project-info">
+                  <h3 class="project-title">Chronos Design System</h3>
+                  <p class="project-desc">A unified multi-brand component library prioritizing accessibility and high-density token architecture.</p>
+                </div>
+                <div class="project-year">2024</div>
+              </div>
+            </a>
+          </article>
+
+          <!-- Project 3: Pinky Sales Shop Management Suite -->
+          <article class="project-card">
+            <a href="projects/pinky-sales.html" class="project-card-link" aria-label="Explore Pinky Sales Shop Management Suite">
+              <div class="project-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1000&q=80" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80';" alt="Pinky Sales cloud shop management, billing, and retail inventory software" class="project-image" loading="lazy">
+                <div class="project-overlay">
+                  <div class="project-arrow-badge" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
+                      <path d="M3.3 12.7L12.7 3.3M12.7 3.3H5.3M12.7 3.3V10.7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                </div>
+                <div class="project-tag-pill">🟢 Live App &bull; pinkysales.in ↗</div>
+              </div>
+              <div class="project-meta">
+                <div class="project-info">
+                  <h3 class="project-title">Pinky Sales — Shop Management Suite</h3>
+                  <p class="project-desc">Published cloud retail suite for real-time inventory tracking, customer billing, and automated invoice balance ledgers live at <strong>pinkysales.in</strong>.</p>
+                </div>
+                <div class="project-year">2025</div>
+              </div>
+            </a>
+          </article>
+
+          <!-- Project 4: Nomad Atlas Magazine -->
+          <article class="project-card">
+            <a href="projects/nomad-atlas.html" class="project-card-link" aria-label="Explore live project: Nomad Editorial Travel Atlas">
+              <div class="project-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1000&q=80" alt="Minimalist architectural photography layout for Nomad Atlas travel journal" class="project-image" loading="lazy">
+                <div class="project-overlay">
+                  <div class="project-arrow-badge" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
+                      <path d="M3.3 12.7L12.7 3.3M12.7 3.3H5.3M12.7 3.3V10.7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                </div>
+                <div class="project-tag-pill">Editorial Web &bull; Publication</div>
+              </div>
+              <div class="project-meta">
+                <div class="project-info">
+                  <h3 class="project-title">Nomad Atlas Magazine</h3>
+                  <p class="project-desc">An immersive narrative publication exploring architectural landmarks and intentional living.</p>
+                </div>
+                <div class="project-year">2023</div>
+              </div>
+            </a>
+          </article>
+
+        </div>
+
+        <div class="works-cta-row">
+          <a href="https://github.com/Lakshya-Shah" target="_blank" rel="noopener noreferrer" class="btn btn-pill btn-dark btn-large">
+            <span>Explore all code on GitHub</span>
+            <svg width="14" height="14" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. WHAT I BRING TO THE TABLE (SERVICES / SKILLS) -->
+    <section class="services-section" id="services">
+      <div class="container">
+
+        <div class="section-label">
+          <span class="section-number">03</span>
+          <span class="section-tag">WHAT I BRING TO THE TABLE</span>
+        </div>
+
+        <div class="services-header">
+          <h2 class="section-title">Capabilities tuned for modern creative demands.</h2>
+          <p class="section-subtext">A disciplined intersection of design thinking, user ergonomics, and uncompromising web craftsmanship.</p>
+        </div>
+
+        <div class="services-list">
+
+          <!-- Row 01 (Content Left, Image Right) -->
+          <article class="service-row">
+            <div class="service-content">
+              <div class="service-index">01</div>
+              <h3 class="service-title">Product &amp; UI/UX Design</h3>
+              <p class="service-tagline">Interfaces crafted for emotion and engineered for seamless conversion.</p>
+              <p class="service-desc">
+                I translate ambiguous product concepts into sharp, intuitive digital experiences. From user empathy mapping to production-ready design tokens, everything serves purpose and delight.
+              </p>
+              <ul class="service-bullets" role="list">
+                <li>Design systems &amp; reusable UI tokens</li>
+                <li>User journey mapping &amp; wireframing</li>
+                <li>High-fidelity responsive layouts</li>
+                <li>Interactive Figma prototyping &amp; testing</li>
+                <li>Accessibility (WCAG 2.1 AA) evaluation</li>
+              </ul>
+              <a href="#contact" class="service-link">
+                <span>View details &amp; discuss</span>
+                <span class="arrow">&rarr;</span>
+              </a>
+            </div>
+            <div class="service-visual">
+              <div class="service-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=800&q=80" alt="UI/UX wireframing and design system layout" class="service-img" loading="lazy">
+              </div>
+            </div>
+          </article>
+
+          <!-- Row 02 (Image Left, Content Right) -->
+          <article class="service-row service-row-reversed">
+            <div class="service-content">
+              <div class="service-index">02</div>
+              <h3 class="service-title">Modern Web Development</h3>
+              <p class="service-tagline">Clean, performant code that elevates brand perception.</p>
+              <p class="service-desc">
+                No bloat. No unnecessary dependencies. I write clean, accessible semantic HTML and modular CSS that loads in milliseconds and scales gracefully on any display viewport.
+              </p>
+              <ul class="service-bullets" role="list">
+                <li>Semantic HTML5 structure &amp; accessibility</li>
+                <li>Vanilla CSS with custom properties &amp; Grid/Flex</li>
+                <li>Fluid typography &amp; responsive layouts</li>
+                <li>Micro-interactions &amp; CSS keyframe animations</li>
+                <li>Git versioning &amp; zero-config static deployments</li>
+              </ul>
+              <a href="#contact" class="service-link">
+                <span>View details &amp; discuss</span>
+                <span class="arrow">&rarr;</span>
+              </a>
+            </div>
+            <div class="service-visual">
+              <div class="service-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80" alt="Clean code editor on desktop screen" class="service-img" loading="lazy">
+              </div>
+            </div>
+          </article>
+
+          <!-- Row 03 (Content Left, Image Right) -->
+          <article class="service-row">
+            <div class="service-content">
+              <div class="service-index">03</div>
+              <h3 class="service-title">Brand Systems &amp; Art Direction</h3>
+              <p class="service-tagline">Distinct visual identities that command industry attention.</p>
+              <p class="service-desc">
+                A website is the frontline of brand identity. I craft holistic visual languages combining expressive typography, curated photography art direction, and deliberate color harmony.
+              </p>
+              <ul class="service-bullets" role="list">
+                <li>Editorial typography pairing &amp; hierarchy</li>
+                <li>Color theory &amp; high-contrast palettes</li>
+                <li>Digital style guides &amp; brand rulebooks</li>
+                <li>Creative asset curation &amp; imagery art direction</li>
+                <li>Consistent social &amp; marketing web assets</li>
+              </ul>
+              <a href="#contact" class="service-link">
+                <span>View details &amp; discuss</span>
+                <span class="arrow">&rarr;</span>
+              </a>
+            </div>
+            <div class="service-visual">
+              <div class="service-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" alt="Abstract 3D brand art and geometry" class="service-img" loading="lazy">
+              </div>
+            </div>
+          </article>
+
+          <!-- Row 04 (Image Left, Content Right) -->
+          <article class="service-row service-row-reversed">
+            <div class="service-content">
+              <div class="service-index">04</div>
+              <h3 class="service-title">Technical Optimization &amp; SEO</h3>
+              <p class="service-tagline">Lightning speed, indexable code, and rock-solid stability.</p>
+              <p class="service-desc">
+                Visual brilliance means nothing if search engines can't parse it or users bounce while waiting. I optimize assets, metadata, and core web vitals for maximum retention and search visibility.
+              </p>
+              <ul class="service-bullets" role="list">
+                <li>Core Web Vitals &amp; PageSpeed 95+ score optimization</li>
+                <li>Open Graph tags &amp; schema markup readiness</li>
+                <li>Modern responsive picture elements &amp; WebP format</li>
+                <li>Cross-browser compatibility (Chrome, Safari, Firefox, Edge)</li>
+                <li>Zero-downtime deployment setup (GitHub Pages / Netlify)</li>
+              </ul>
+              <a href="#contact" class="service-link">
+                <span>View details &amp; discuss</span>
+                <span class="arrow">&rarr;</span>
+              </a>
+            </div>
+            <div class="service-visual">
+              <div class="service-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Performance analytics chart and website metrics" class="service-img" loading="lazy">
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5. TESTIMONIALS SECTION -->
+    <section class="testimonials-section" id="testimonials">
+      <div class="container">
+
+        <div class="section-label">
+          <span class="section-number">04</span>
+          <span class="section-tag">TESTIMONIALS &amp; REPUTATION</span>
+        </div>
+
+        <div class="testimonials-header">
+          <h2 class="section-title">Words from partners and clients.</h2>
+          <p class="section-subtext">Direct feedback from entrepreneurs and design leaders who have experienced Lakshya Shah's craft firsthand.</p>
+        </div>
+
+        <div class="testimonials-grid">
+
+          <!-- Card 1 -->
+          <div class="testimonial-card">
+            <div class="testimonial-stars" aria-label="5 out of 5 stars">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <blockquote class="testimonial-quote">
+              &ldquo;Lakshya is that rare hybrid who has both the visual polish of a seasoned art director and the precision of a frontend engineer. Our bounce rate dropped 35% following the launch.&rdquo;
+            </blockquote>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&h=120&q=80" alt="Elena Vance" class="author-avatar" width="48" height="48" loading="lazy">
+              <div class="author-info">
+                <strong class="author-name">Elena Vance</strong>
+                <span class="author-role">Founder, Studio Vesper</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="testimonial-card">
+            <div class="testimonial-stars" aria-label="5 out of 5 stars">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <blockquote class="testimonial-quote">
+              &ldquo;Lakshya engineered our entire retail suite at pinkysales.in. It handles our daily invoice ledger balancing, high-volume inventory updates, and real-time syncing flawlessly. A huge leap forward for our business.&rdquo;
+            </blockquote>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&h=120&q=80" alt="Rajesh Mehta" class="author-avatar" width="48" height="48" loading="lazy">
+              <div class="author-info">
+                <strong class="author-name">Rajesh Mehta</strong>
+                <span class="author-role">Retail Director, Pinky Sales</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="testimonial-card">
+            <div class="testimonial-stars" aria-label="5 out of 5 stars">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+            </div>
+            <blockquote class="testimonial-quote">
+              &ldquo;Every detail was considered—from the typographic rhythm down to mobile touch targets. The site feels like a high-end luxury editorial, yet it loads instantly. Couldn't recommend more.&rdquo;
+            </blockquote>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=120&h=120&q=80" alt="Sophia Lindqvist" class="author-avatar" width="48" height="48" loading="lazy">
+              <div class="author-info">
+                <strong class="author-name">Sophia Lindqvist</strong>
+                <span class="author-role">Creative Lead, Atlas Media</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 6. BIG CTA SECTION -->
+    <section class="cta-section" id="contact">
+      <div class="container">
+        <div class="cta-box">
+          <div class="cta-badge">
+            <span class="pulse-dot"></span>
+            <span>LET’S START A CONVERSATION</span>
+          </div>
+
+          <h2 class="cta-heading">
+            Create something that knows where it's going.
+          </h2>
+
+          <p class="cta-subtext">
+            Whether you have an upcoming project, want to audit your current interface, or just want to discuss modern web craft—my inbox is open.
+          </p>
+
+          <div class="cta-actions">
+            <a href="mailto:lakshya.shah@example.com" class="btn btn-pill btn-primary btn-cta">
+              <span>Let's Talk Today</span>
+              <svg width="14" height="14" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="btn btn-pill btn-outline-white">
+              <span>Connect on LinkedIn</span>
+            </a>
+          </div>
+
+          <!-- Direct Contact Information Strip -->
+          <div class="cta-direct-info">
+            <div class="info-item">
+              <span class="info-label">Direct Email:</span>
+              <a href="mailto:lakshya.shah@example.com" class="info-value">lakshya.shah@example.com</a>
+            </div>
+            <div class="info-divider" aria-hidden="true">•</div>
+            <div class="info-item">
+              <span class="info-label">Location:</span>
+              <span class="info-value">Worldwide (Remote)</span>
+            </div>
+            <div class="info-divider" aria-hidden="true">•</div>
+            <div class="info-item">
+              <span class="info-label">Timezone:</span>
+              <span class="info-value">Flexible / Available Worldwide</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 7. FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      
+      <div class="footer-top">
+        <div class="footer-brand-col">
+          <a href="#home" class="footer-brand">Lakshya Shah</a>
+          <p class="footer-tagline">
+            Creative Developer &amp; UI Designer crafting intentional digital products that inspire confidence.
+          </p>
+        </div>
+
+        <div class="footer-links-group">
+          <div class="footer-col">
+            <span class="footer-col-title">Navigation</span>
+            <ul class="footer-nav" role="list">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#works">Selected Works</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#testimonials">Testimonials</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <span class="footer-col-title">Social / Networks</span>
+            <ul class="footer-nav" role="list">
+              <li><a href="https://github.com/Lakshya-Shah" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+              <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></li>
+              <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram ↗</a></li>
+              <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter / X ↗</a></li>
+              <li><a href="https://dribbble.com" target="_blank" rel="noopener noreferrer">Dribbble ↗</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copyright">
+          &copy; <span id="currentYear">2026</span> Lakshya Shah. All rights reserved. Built with semantic HTML &amp; Vanilla CSS.
+        </p>
+        <div class="footer-back-to-top">
+          <a href="#home" class="back-to-top-btn" aria-label="Back to top of the page">
+            <span>Back to top</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M6 9.5V2.5M6 2.5L2.5 6M6 2.5L9.5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Minimal JavaScript: Mobile Menu, Header Scroll State, and Dynamic Year -->
+  <script>
+    // Update copyright year dynamically
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // Mobile Navigation Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    const header = document.getElementById('header');
+
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('nav-open');
+        menuToggle.classList.toggle('is-active', isOpen);
+        menuToggle.setAttribute('aria-expanded', isOpen);
+        document.body.classList.toggle('no-scroll', isOpen);
+      });
+
+      // Close menu when a navigation item is clicked
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('nav-open');
+          menuToggle.classList.remove('is-active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+          document.body.classList.remove('no-scroll');
+        });
+      });
+    }
+
+    // Header blur and elevation on scroll
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 40) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }, { passive: true });
+
+    // Active navigation highlight on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navItems = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+      let currentSection = '';
+      const scrollY = window.pageYOffset;
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        const sectionHeight = section.offsetHeight;
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          currentSection = section.getAttribute('id');
+        }
+      });
+
+      navItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('href') === `#${currentSection}`) {
+          item.classList.add('active');
+        }
+      });
+    }, { passive: true });
+  </script>
+
+</body>
+</html>

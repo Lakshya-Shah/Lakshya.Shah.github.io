@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chronos Design System — Enterprise UI Toolkit | Project by Lakshya Shah</title>
+  <meta name="description" content="Chronos Design System is a scalable, accessible, multi-brand component library and design token architecture created by Lakshya Shah.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-border: #334155;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #3b82f6;
+      --primary-hover: #2563eb;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --lime: #d4ff3f;
+      --radius: 12px;
+      --font-body: 'Inter', sans-serif;
+      --font-heading: 'Syne', sans-serif;
+      --font-mono: 'Space Grotesk', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+    }
+
+    /* Top Return Bar */
+    .top-bar {
+      background-color: #0b1120;
+      border-bottom: 1px solid var(--surface-border);
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .back-btn {
+      color: var(--lime);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      font-size: 0.88rem;
+    }
+    .back-btn:hover { text-decoration: underline; }
+
+    /* Layout */
+    .doc-layout {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 40px 24px;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 48px;
+    }
+    .sidebar {
+      position: sticky;
+      top: 80px;
+      height: fit-content;
+    }
+    .sidebar-brand {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .sidebar-nav {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .sidebar-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      display: block;
+      transition: all 0.2s;
+    }
+    .sidebar-nav a:hover, .sidebar-nav a.active {
+      color: #fff;
+      background: var(--surface);
+    }
+
+    /* Content Area */
+    .content h1 {
+      font-family: var(--font-heading);
+      font-size: 2.8rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+    .content p.lead {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      max-width: 750px;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      margin: 48px 0 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--surface-border);
+    }
+
+    /* Color Swatches Grid */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .color-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .color-card:hover { transform: translateY(-4px); }
+    .color-preview { height: 90px; }
+    .color-meta { padding: 12px 14px; }
+    .color-name { font-weight: 600; font-size: 0.9rem; margin-bottom: 2px; }
+    .color-hex { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted); }
+
+    /* Interactive Component Playground */
+    .playground-box {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius);
+      padding: 32px;
+      margin-bottom: 32px;
+    }
+    .controls-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      align-items: center;
+      background: rgba(0,0,0,0.25);
+      padding: 12px 18px;
+      border-radius: 8px;
+    }
+    .control-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .control-btn {
+      background: #0f172a;
+      border: 1px solid var(--surface-border);
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+    .control-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    /* Live Component Stage */
+    .stage {
+      min-height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      background: #0b1120;
+      border: 1px dashed var(--surface-border);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+
+    /* Live Code Generator Box */
+    .code-box {
+      background: #0b1120;
+      border: 1px solid var(--surface-border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: #38bdf8;
+    }
+    .copy-btn {
+      background: #1e293b;
+      border: 1px solid var(--surface-border);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.78rem;
+    }
+    .copy-btn:hover { background: #334155; }
+
+    /* System Components */
+    .c-btn {
+      font-family: var(--font-body);
+      font-weight: 600;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .c-btn-primary { background: var(--primary); color: #fff; }
+    .c-btn-primary:hover { background: var(--primary-hover); }
+    .c-btn-secondary { background: #334155; color: #fff; }
+    .c-btn-secondary:hover { background: #475569; }
+    .c-btn-outline { background: transparent; border-color: #64748b; color: #fff; }
+    .c-btn-outline:hover { background: rgba(255,255,255,0.05); border-color: #fff; }
+    .c-btn-danger { background: var(--danger); color: #fff; }
+
+    .c-btn-sm { padding: 6px 14px; font-size: 0.82rem; }
+    .c-btn-md { padding: 10px 20px; font-size: 0.95rem; }
+    .c-btn-lg { padding: 14px 28px; font-size: 1.1rem; }
+
+    /* Form Inputs Demo */
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .form-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .c-input {
+      background: #0b1120;
+      border: 1px solid var(--surface-border);
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .c-input:focus { border-color: var(--primary); }
+    .c-input.error { border-color: var(--danger); }
+
+    /* Badges & Tags */
+    .badges-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .c-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      font-family: var(--font-mono);
+    }
+    .c-badge-blue { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+    .c-badge-green { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .c-badge-yellow { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .c-badge-red { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+    .c-badge-lime { background: rgba(212, 255, 63, 0.15); color: #d4ff3f; border: 1px solid rgba(212, 255, 63, 0.3); }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--lime);
+      color: #000;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 12px 20px;
+      border-radius: 8px;
+      transform: translateY(100px);
+      transition: transform 0.3s;
+      z-index: 2000;
+    }
+    .toast.show { transform: translateY(0); }
+
+    @media (max-width: 860px) {
+      .doc-layout { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+      .form-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top bar back to main portfolio -->
+  <div class="top-bar">
+    <a href="../index.html#works" class="back-btn">
+      <span>&larr;</span> Back to Lakshya Shah's Portfolio
+    </a>
+    <span style="font-family: var(--font-mono); font-size: 0.82rem; color: #94a3b8;">Chronos UI Toolkit &bull; v2.4</span>
+  </div>
+
+  <div class="doc-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <span style="color: var(--primary);">✦</span> Chronos DS
+      </div>
+      <ul class="sidebar-nav">
+        <li><a href="#overview" class="active">Overview &amp; Tokens</a></li>
+        <li><a href="#colors">Color Palette</a></li>
+        <li><a href="#buttons">Buttons &amp; Actions</a></li>
+        <li><a href="#inputs">Form Controls</a></li>
+        <li><a href="#badges">Status Badges</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Docs Content -->
+    <main class="content">
+      <div id="overview">
+        <span style="font-family: var(--font-mono); color: var(--lime); font-size: 0.85rem; font-weight: 600;">DESIGN SYSTEM &amp; TOKENS</span>
+        <h1>Chronos Design System</h1>
+        <p class="lead">An accessible, multi-brand component library and design token framework architected by <strong>Lakshya Shah</strong>. Crafted for cross-platform speed, design consistency, and zero runtime overhead.</p>
+      </div>
+
+      <!-- Color Tokens -->
+      <section id="colors">
+        <h2 class="section-title">Color Palette Tokens</h2>
+        <p style="color: var(--text-muted); margin-bottom: 20px;">Click on any token card to copy its Hex color value to your clipboard.</p>
+        
+        <div class="color-grid">
+          <div class="color-card" onclick="copyToken('#3b82f6', 'Primary Blue')">
+            <div class="color-preview" style="background: #3b82f6;"></div>
+            <div class="color-meta">
+              <div class="color-name">Primary Blue</div>
+              <div class="color-hex">#3B82F6</div>
+            </div>
+          </div>
+          <div class="color-card" onclick="copyToken('#10b981', 'Success Green')">
+            <div class="color-preview" style="background: #10b981;"></div>
+            <div class="color-meta">
+              <div class="color-name">Success Green</div>
+              <div class="color-hex">#10B981</div>
+            </div>
+          </div>
+          <div class="color-card" onclick="copyToken('#d4ff3f', 'Accent Lime')">
+            <div class="color-preview" style="background: #d4ff3f;"></div>
+            <div class="color-meta">
+              <div class="color-name">Accent Lime</div>
+              <div class="color-hex">#D4FF3F</div>
+            </div>
+          </div>
+          <div class="color-card" onclick="copyToken('#f59e0b', 'Warning Amber')">
+            <div class="color-preview" style="background: #f59e0b;"></div>
+            <div class="color-meta">
+              <div class="color-name">Warning Amber</div>
+              <div class="color-hex">#F59E0B</div>
+            </div>
+          </div>
+          <div class="color-card" onclick="copyToken('#ef4444', 'Danger Red')">
+            <div class="color-preview" style="background: #ef4444;"></div>
+            <div class="color-meta">
+              <div class="color-name">Danger Red</div>
+              <div class="color-hex">#EF4444</div>
+            </div>
+          </div>
+          <div class="color-card" onclick="copyToken('#0f172a', 'Obsidian Slate')">
+            <div class="color-preview" style="background: #0f172a; border-bottom: 1px solid #334155;"></div>
+            <div class="color-meta">
+              <div class="color-name">Obsidian Slate</div>
+              <div class="color-hex">#0F172A</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Buttons Playground -->
+      <section id="buttons">
+        <h2 class="section-title">Interactive Component: Buttons</h2>
+        <div class="playground-box">
+          <div class="controls-row">
+            <span class="control-label">Variant:</span>
+            <button class="control-btn active" onclick="setVariant('primary', this)">Primary</button>
+            <button class="control-btn" onclick="setVariant('secondary', this)">Secondary</button>
+            <button class="control-btn" onclick="setVariant('outline', this)">Outline</button>
+            <button class="control-btn" onclick="setVariant('danger', this)">Danger</button>
+
+            <span class="control-label" style="margin-left: 16px;">Size:</span>
+            <button class="control-btn" onclick="setSize('sm', this)">SM</button>
+            <button class="control-btn active" onclick="setSize('md', this)">MD</button>
+            <button class="control-btn" onclick="setSize('lg', this)">LG</button>
+          </div>
+
+          <div class="stage">
+            <button id="liveBtn" class="c-btn c-btn-primary c-btn-md">
+              <span>Interactive Button</span>
+              <span>&rarr;</span>
+            </button>
+          </div>
+
+          <div class="code-box">
+            <span id="codeSnippet">&lt;button class="c-btn c-btn-primary c-btn-md"&gt;Action &rarr;&lt;/button&gt;</span>
+            <button class="copy-btn" onclick="copySnippet()">Copy Snippet</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Form Inputs Section -->
+      <section id="inputs">
+        <h2 class="section-title">Interactive Component: Form Controls</h2>
+        <div class="playground-box">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Default Text Input</label>
+              <input type="text" class="c-input" placeholder="e.g. Lakshya Shah" value="Lakshya Shah">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Password with Toggle</label>
+              <div style="position: relative;">
+                <input type="password" id="passInput" class="c-input" style="width: 100%;" value="SuperSecret2026!">
+                <button type="button" onclick="togglePass()" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.8rem; cursor: pointer;">Show</button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Error Validation State</label>
+              <input type="email" class="c-input error" value="invalid-email-format">
+              <span style="font-size: 0.75rem; color: var(--danger);">Please enter a valid business email address.</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Disabled State</label>
+              <input type="text" class="c-input" value="Locked by Administrator" disabled style="opacity: 0.5; cursor: not-allowed;">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Badges Section -->
+      <section id="badges">
+        <h2 class="section-title">Status Badges &amp; Tags</h2>
+        <div class="playground-box">
+          <div class="badges-row">
+            <span class="c-badge c-badge-blue">● Beta v2.4</span>
+            <span class="c-badge c-badge-green">✓ Operational 99.9%</span>
+            <span class="c-badge c-badge-yellow">⚠ Attention Required</span>
+            <span class="c-badge c-badge-red">✕ Build Failed</span>
+            <span class="c-badge c-badge-lime">★ Featured Release</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Return Footer -->
+      <footer style="margin-top: 60px; padding: 40px 0; border-top: 1px solid var(--surface-border); text-align: center;">
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Architected by <strong style="color: #fff;">Lakshya Shah</strong> &bull; Zero external dependencies</p>
+        <a href="../index.html" class="back-btn" style="margin-top: 14px;">&larr; Return to main portfolio</a>
+      </footer>
+    </main>
+  </div>
+
+  <div id="toast" class="toast">Copied to clipboard!</div>
+
+  <script>
+    let currentVariant = 'primary';
+    let currentSize = 'md';
+    const liveBtn = document.getElementById('liveBtn');
+    const codeSnippet = document.getElementById('codeSnippet');
+    const toast = document.getElementById('toast');
+
+    function setVariant(variant, elem) {
+      currentVariant = variant;
+      elem.parentNode.querySelectorAll('.control-btn').forEach(btn => {
+        if (['Primary','Secondary','Outline','Danger'].includes(btn.textContent)) {
+          btn.classList.remove('active');
+        }
+      });
+      elem.classList.add('active');
+      updateButton();
+    }
+
+    function setSize(size, elem) {
+      currentSize = size;
+      elem.parentNode.querySelectorAll('.control-btn').forEach(btn => {
+        if (['SM','MD','LG'].includes(btn.textContent)) {
+          btn.classList.remove('active');
+        }
+      });
+      elem.classList.add('active');
+      updateButton();
+    }
+
+    function updateButton() {
+      liveBtn.className = `c-btn c-btn-${currentVariant} c-btn-${currentSize}`;
+      codeSnippet.textContent = `<button class="c-btn c-btn-${currentVariant} c-btn-${currentSize}">Action →</button>`;
+    }
+
+    function copySnippet() {
+      navigator.clipboard.writeText(codeSnippet.textContent).then(() => {
+        toast.textContent = 'Button snippet copied to clipboard!';
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2500);
+      });
+    }
+
+    function togglePass() {
+      const p = document.getElementById('passInput');
+      p.type = p.type === 'password' ? 'text' : 'password';
+    }
+
+    function copyToken(hex, name) {
+      navigator.clipboard.writeText(hex).then(() => {
+        toast.textContent = `Copied ${name} (${hex}) to clipboard!`;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2500);
+      }).catch(() => {
+        toast.textContent = `Token: ${name} (${hex})`;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2500);
+      });
+    }
+  </script>
+
+</body>
+</html>

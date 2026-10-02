@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nomad Atlas — Editorial Architectural Magazine | Project by Lakshya Shah</title>
+  <meta name="description" content="Nomad Atlas is an immersive digital publication exploring architectural sanctuaries and intentional living, crafted by Lakshya Shah.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f8f6f0;
+      --card-bg: #ffffff;
+      --text: #1a1a18;
+      --text-muted: #6b6962;
+      --border: #e6e3d8;
+      --accent: #92400e;
+      --lime: #d4ff3f;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'Space Grotesk', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.75;
+    }
+
+    /* Top Return Bar */
+    .top-bar {
+      background: #111;
+      color: #fff;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .back-btn {
+      color: var(--lime);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+    }
+    .back-btn:hover { text-decoration: underline; }
+
+    /* Audio Player Bar */
+    .audio-player-bar {
+      background: #ece8dc;
+      border-bottom: 1px solid var(--border);
+      padding: 10px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .audio-btn {
+      background: var(--text);
+      color: #fff;
+      border: none;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      cursor: pointer;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+    }
+    .audio-btn:hover { background: #333; }
+    .bookmark-btn {
+      background: transparent;
+      border: 1px solid var(--text-muted);
+      color: var(--text);
+      padding: 5px 14px;
+      border-radius: 9999px;
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    /* Magazine Header */
+    .magazine-header {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 50px 24px 24px;
+      text-align: center;
+      border-bottom: 2px solid var(--text);
+    }
+    .mag-issue {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .mag-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.8rem, 7.5vw, 5.8rem);
+      letter-spacing: 0.08em;
+      line-height: 1;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .mag-tagline {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--text-muted);
+    }
+
+    /* Lead Story Hero */
+    .lead-story {
+      max-width: 1200px;
+      margin: 40px auto 80px;
+      padding: 0 24px;
+    }
+    .lead-img-box {
+      position: relative;
+      height: clamp(380px, 60vh, 600px);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 40px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+    }
+    .lead-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .lead-badge {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: blur(8px);
+      padding: 6px 16px;
+      border-radius: 9999px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .story-meta-wrap {
+      max-width: 840px;
+      margin: 0 auto;
+    }
+    .story-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 4.8vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.18;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+    .story-byline {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 36px;
+      text-align: center;
+    }
+    .story-text {
+      font-size: 1.15rem;
+      color: #33322f;
+      line-height: 1.85;
+      margin-bottom: 28px;
+    }
+    .story-text::first-letter {
+      float: left;
+      font-family: var(--font-serif);
+      font-size: 4.8rem;
+      line-height: 0.8;
+      padding-top: 4px;
+      padding-right: 12px;
+      color: var(--text);
+    }
+
+    .pull-quote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.7rem;
+      line-height: 1.4;
+      color: var(--accent);
+      border-left: 3px solid var(--accent);
+      padding: 16px 0 16px 28px;
+      margin: 40px 0;
+    }
+
+    /* Dual Photo Gallery */
+    .gallery-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin: 48px 0;
+    }
+    .gallery-item {
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+    }
+    .gallery-caption {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    /* Magazine 3-Column Editorial Grid */
+    .mag-grid {
+      max-width: 1200px;
+      margin: 60px auto 100px;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 36px;
+    }
+    .mag-card {
+      display: flex;
+      flex-direction: column;
+    }
+    .mag-card-img-wrap {
+      aspect-ratio: 4 / 3;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .mag-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .mag-card:hover .mag-card-img { transform: scale(1.04); }
+    .mag-card-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .mag-card-title {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+    .mag-card-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #111;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 12px 20px;
+      border-radius: 8px;
+      transform: translateY(100px);
+      transition: transform 0.3s;
+      z-index: 2000;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .toast.show { transform: translateY(0); }
+
+    @media (max-width: 860px) {
+      .mag-grid { grid-template-columns: 1fr; }
+      .gallery-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top bar back to main portfolio -->
+  <div class="top-bar">
+    <a href="../index.html#works" class="back-btn">
+      <span>&larr;</span> Back to Lakshya Shah's Portfolio
+    </a>
+    <span style="font-family: var(--font-mono); font-size: 0.82rem; color: #cbd5e1;">Nomad Atlas Publication &bull; Autumn 2026</span>
+  </div>
+
+  <!-- Audio Reading Strip -->
+  <div class="audio-player-bar">
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <button class="audio-btn" id="playBtn" onclick="toggleAudio()">
+        <span id="playIcon">▶</span> <span id="playText">Listen to Article (5:45)</span>
+      </button>
+      <span style="color: var(--text-muted); font-size: 0.8rem; font-family: var(--font-mono);">Narrated by Atlas Editorial Studio</span>
+    </div>
+
+    <div>
+      <button class="bookmark-btn" onclick="saveBookmark()">★ Bookmark Article</button>
+    </div>
+  </div>
+
+  <header class="magazine-header">
+    <div class="mag-issue">ISSUE NO. 14 &bull; ARCHITECTURE &amp; TACTILE LIVING &bull; GLOBAL DISPATCH</div>
+    <h1 class="mag-title">NOMAD ATLAS</h1>
+    <p class="mag-tagline">A digital chronicle of sacred spaces, high minimalism, and tactile human habitats.</p>
+  </header>
+
+  <main class="lead-story">
+    <div class="lead-img-box">
+      <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1400&q=80" alt="Minimalist brutalist architecture against clear horizon" class="lead-img">
+      <span class="lead-badge">FEATURE ESSAY &bull; 7 MIN READ</span>
+    </div>
+
+    <div class="story-meta-wrap">
+      <h2 class="story-headline">The Quiet Monument: Stone, Shadow, and the Architecture of Solitude</h2>
+      <div class="story-byline">Curated &amp; Designed by Lakshya Shah &bull; Kyoto &amp; Zurich</div>
+      
+      <p class="story-text">
+        Architecture at its purest does not attempt to conquer the landscape; it frames it with stillness. High within the forested ridges of Kyoto, the stone sanctuary designed by contemporary minimalist masters dissolves the distinction between interior contemplation and raw cedar forest. Through massive geometric openings, natural light operates as the primary building material, mutating throughout each passing hour.
+      </p>
+
+      <blockquote class="pull-quote">
+        &ldquo;When a building listens to its topography, silence ceases to be empty; it becomes the most resonant material in the room.&rdquo;
+      </blockquote>
+
+      <p class="story-text" style="font-size: 1.1rem;">
+        Engineered as an homage to modern editorial typography, Nomad Atlas blends high-density reading aesthetics with fluid web performance. Every typographic ratio, ligature, and photograph was hand-calibrated by Lakshya Shah to celebrate the enduring weight of printed publication craft on the digital canvas.
+      </p>
+
+      <!-- Mid-article photo gallery -->
+      <div class="gallery-row">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Courtyard water basin and limestone walls">
+          <div class="gallery-caption">Fig 1. Monolithic limestone basin catching rain runoff in the northern courtyard.</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" alt="Minimalist wooden library and reading desk">
+          <div class="gallery-caption">Fig 2. Solid Japanese cedar reading tables angled toward the midday sun.</div>
+        </div>
+      </div>
+
+      <p class="story-text" style="font-size: 1.1rem;">
+        By eliminating extraneous scripts and focusing purely on semantic typographic rhythm, this web publication loads in under 400 milliseconds globally while preserving the tactile gravity of physical fine art books.
+      </p>
+    </div>
+
+    <!-- Editorial 3 Card Grid -->
+    <h3 style="font-family: var(--font-serif); font-size: 1.8rem; margin: 80px 0 24px; text-align: center;">Related Dispatches from Issue 14</h3>
+    <div class="mag-grid">
+      <article class="mag-card">
+        <div class="mag-card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Sleek glass tower geometry" class="mag-card-img">
+        </div>
+        <div class="mag-card-tag">Urban Morphology</div>
+        <h3 class="mag-card-title">Glass Monoliths of Northern Europe</h3>
+        <p class="mag-card-desc">How Oslo and Copenhagen are redefining sustainable urban density with wood-hybrid monoliths.</p>
+      </article>
+
+      <article class="mag-card">
+        <div class="mag-card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Serene alpine mist and mountain peaks" class="mag-card-img">
+        </div>
+        <div class="mag-card-tag">Alpine Refuge</div>
+        <h3 class="mag-card-title">Living Off the Continental Grid</h3>
+        <p class="mag-card-desc">Off-grid shelters perched above the tree line in the Swiss Alps, capturing clean glacial solar energy.</p>
+      </article>
+
+      <article class="mag-card">
+        <div class="mag-card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80" alt="Modern Scandinavian studio interior" class="mag-card-img">
+        </div>
+        <div class="mag-card-tag">Interior Craft</div>
+        <h3 class="mag-card-title">The Tactile Studio Experience</h3>
+        <p class="mag-card-desc">Natural oak, raw linen, and acoustic perfection in modern Scandinavian creative studios.</p>
+      </article>
+    </div>
+  </main>
+
+  <div id="toast" class="toast">Article saved to your personal library!</div>
+
+  <footer style="text-align: center; padding: 60px 24px; border-top: 1px solid var(--border); background: #f0ede4;">
+    <p style="color: var(--text-muted); font-size: 0.9rem;">Nomad Atlas editorial publication concept by <strong style="color: #000;">Lakshya Shah</strong></p>
+    <a href="../index.html#works" class="back-btn" style="color: #000; margin-top: 16px; font-weight: 700;">&larr; Return to main portfolio</a>
+  </footer>
+
+  <script>
+    let isPlaying = false;
+    function toggleAudio() {
+      isPlaying = !isPlaying;
+      document.getElementById('playIcon').textContent = isPlaying ? '⏸' : '▶';
+      document.getElementById('playText').textContent = isPlaying ? 'Playing Narration (1:14 / 5:45)' : 'Listen to Article (5:45)';
+    }
+
+    function saveBookmark() {
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+  </script>
+
+</body>
+</html>

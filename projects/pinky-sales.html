@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pinky Sales — Premium Shop Management Suite | Built by Lakshya Shah</title>
+  <meta name="description" content="Pinky Sales is an end-to-end retail OS, shop management, and real-time inventory ledger suite engineered and published by Lakshya Shah. Live at pinkysales.in.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: #111827;
+      --card-inner: #1a2234;
+      --card-border: #232f45;
+      --accent-pink: #ec4899;
+      --accent-lime: #d4ff3f;
+      --accent-blue: #3b82f6;
+      --accent-green: #10b981;
+      --accent-orange: #f59e0b;
+      --text: #f9fafb;
+      --text-muted: #94a3b8;
+      --radius-sm: 8px;
+      --radius: 16px;
+      --font-body: 'Inter', sans-serif;
+      --font-heading: 'Syne', sans-serif;
+      --font-mono: 'Space Grotesk', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+    }
+
+    /* Top Return Bar */
+    .top-bar {
+      background: #070a12;
+      border-bottom: 1px solid var(--card-border);
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .back-btn {
+      color: var(--accent-lime);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: transform 0.2s;
+    }
+    .back-btn:hover { transform: translateX(-4px); }
+    
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: #10b981;
+      padding: 5px 14px;
+      border-radius: 9999px;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .live-badge:hover {
+      background: rgba(16, 185, 129, 0.25);
+      transform: translateY(-1px);
+    }
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 10px #10b981;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { opacity: 0.6; }
+      50% { opacity: 1; }
+      100% { opacity: 0.6; }
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    /* Hero */
+    .project-hero {
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto 48px;
+    }
+    .hero-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-pink);
+      background: rgba(236, 72, 153, 0.12);
+      border: 1px solid rgba(236, 72, 153, 0.3);
+      padding: 6px 16px;
+      border-radius: 9999px;
+      margin-bottom: 20px;
+    }
+    .project-hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+    .project-hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .tech-stack-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .tech-pill {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 5px 12px;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      color: #cbd5e1;
+    }
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 28px;
+      border-radius: 9999px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: all 0.25s;
+    }
+    .btn-live {
+      background: var(--accent-lime);
+      color: #000;
+      box-shadow: 0 4px 20px rgba(212, 255, 63, 0.3);
+    }
+    .btn-live:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(212, 255, 63, 0.45);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--card-border);
+      color: #fff;
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: #fff;
+    }
+
+    /* Key Live Metrics */
+    .metrics-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .metric-chip {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .metric-chip span.num {
+      font-family: var(--font-mono);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .metric-chip span.label {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* ==========================================================================
+       INTERACTIVE LIVE DEMO CONSOLE
+       ========================================================================== */
+    .demo-window {
+      background: #0f1523;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 72px;
+      box-shadow: 0 25px 70px rgba(0,0,0,0.6);
+    }
+    .window-titlebar {
+      background: #172033;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--card-border);
+    }
+    .window-dots {
+      display: flex;
+      gap: 6px;
+    }
+    .dot { width: 11px; height: 11px; border-radius: 50%; }
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #f59e0b; }
+    .dot-green { background: #10b981; }
+
+    .window-address {
+      background: #0b0f19;
+      border: 1px solid var(--card-border);
+      padding: 4px 16px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* App Nav Tabs */
+    .app-nav {
+      background: #131b2e;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--card-border);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .app-brand {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .app-tabs {
+      display: flex;
+      gap: 8px;
+    }
+    .tab-btn {
+      background: none;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tab-btn:hover { color: #fff; background: rgba(255,255,255,0.05); }
+    .tab-btn.active {
+      background: #1e293b;
+      color: var(--accent-lime);
+      border-color: rgba(212, 255, 63, 0.3);
+    }
+
+    .demo-content-body {
+      padding: 28px;
+    }
+
+    /* TAB 1: POS Billing Stage */
+    .pos-layout {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 24px;
+    }
+    .pos-catalog {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .pos-subhead {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      margin-bottom: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .product-item {
+      background: var(--card-inner);
+      border: 1px solid var(--card-border);
+      padding: 12px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.2s;
+    }
+    .product-item:hover {
+      border-color: var(--accent-blue);
+      transform: translateY(-2px);
+      background: #232e44;
+    }
+    .prod-name { font-size: 0.88rem; font-weight: 600; }
+    .prod-sku { font-size: 0.72rem; color: var(--text-muted); font-family: var(--font-mono); }
+    .prod-price { font-family: var(--font-mono); font-weight: 700; color: var(--accent-lime); }
+
+    /* Cart & Ledger Box */
+    .pos-invoice-panel {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .customer-selector {
+      background: var(--card-inner);
+      border: 1px solid var(--card-border);
+      padding: 10px 14px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+    .customer-selector select {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      width: 100%;
+      outline: none;
+      cursor: pointer;
+    }
+    .customer-selector select option {
+      background: #111827;
+      color: #fff;
+    }
+
+    .cart-table-wrap {
+      max-height: 180px;
+      overflow-y: auto;
+      margin-bottom: 16px;
+    }
+    .cart-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+    .cart-table th {
+      text-align: left;
+      padding: 6px 8px;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--card-border);
+      font-family: var(--font-mono);
+    }
+    .cart-table td {
+      padding: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .qty-btn {
+      background: #26334d;
+      color: #fff;
+      border: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 800;
+      margin: 0 4px;
+    }
+
+    /* Financial Ledger Breakdown */
+    .ledger-summary {
+      background: var(--card-inner);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 0.85rem;
+      margin-bottom: 16px;
+    }
+    .ledger-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      color: var(--text-muted);
+    }
+    .ledger-row.highlight {
+      color: #f59e0b;
+      font-weight: 600;
+    }
+    .ledger-row.total-row {
+      border-top: 1px dashed var(--card-border);
+      padding-top: 8px;
+      margin-top: 6px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .ledger-row.total-row .net-amount {
+      color: var(--accent-lime);
+      font-family: var(--font-mono);
+    }
+
+    .invoice-actions {
+      display: flex;
+      gap: 10px;
+    }
+    .btn-checkout {
+      flex: 1;
+      background: var(--accent-lime);
+      color: #000;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .btn-checkout:hover { background: #bde829; transform: translateY(-1px); }
+    .btn-reset {
+      background: #26334d;
+      color: #cbd5e1;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      cursor: pointer;
+    }
+
+    /* TAB 2: Inventory Table */
+    .inv-table-wrap {
+      width: 100%;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .inv-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    .inv-table th {
+      background: #172033;
+      padding: 12px 16px;
+      text-align: left;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .inv-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      font-family: var(--font-mono);
+    }
+    .badge-in-stock { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+    .badge-low-stock { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+    .badge-reorder { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+
+    /* TAB 3: Customer Accounts */
+    .ledger-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .customer-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .customer-card h4 { font-size: 1.05rem; margin-bottom: 4px; }
+    .customer-card p { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 16px; font-family: var(--font-mono); }
+    .balance-chip {
+      background: var(--card-inner);
+      padding: 10px 14px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+      margin-bottom: 8px;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.75);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-card {
+      background: #111827;
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      width: 90%;
+      max-width: 520px;
+      padding: 28px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: #94a3b8;
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    /* Architectural Deep Dive */
+    .deep-dive-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 64px;
+    }
+    .dive-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 30px;
+    }
+    .dive-icon { font-size: 2rem; margin-bottom: 14px; }
+    .dive-card h3 { font-family: var(--font-heading); font-size: 1.25rem; margin-bottom: 10px; }
+    .dive-card p { font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* Final CTA */
+    .final-cta {
+      background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      padding: 60px 32px;
+      text-align: center;
+    }
+    .final-cta h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 16px;
+    }
+    .final-cta p {
+      color: #cbd5e1;
+      max-width: 620px;
+      margin: 0 auto 32px;
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 960px) {
+      .pos-layout { grid-template-columns: 1fr; }
+      .metrics-bar { grid-template-columns: repeat(2, 1fr); }
+      .deep-dive-grid { grid-template-columns: 1fr; }
+      .ledger-cards-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .metrics-bar { grid-template-columns: 1fr; }
+      .catalog-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top bar back to main portfolio -->
+  <div class="top-bar">
+    <a href="../index.html#works" class="back-btn">
+      <span>&larr;</span> Back to Lakshya Shah's Portfolio
+    </a>
+    <a href="https://pinkysales.in" target="_blank" rel="noopener noreferrer" class="live-badge">
+      <span class="live-dot"></span> Live in Production: pinkysales.in ↗
+    </a>
+  </div>
+
+  <main class="container">
+    
+    <!-- Hero Header -->
+    <header class="project-hero">
+      <span class="hero-tag">★ PUBLISHED SAAS PLATFORM &bull; PRODUCTION READY</span>
+      <h1>Pinky Sales — Premium Management Suite</h1>
+      <p>
+        An enterprise-grade, cloud-powered retail operating system and inventory control suite engineered by <strong>Lakshya Shah</strong>. Built to eliminate manual billing errors, streamline customer credit ledger balances, and provide instant real-time sync across retail stores.
+      </p>
+
+      <div class="tech-stack-row">
+        <span class="tech-pill">React 18</span>
+        <span class="tech-pill">Supabase Realtime</span>
+        <span class="tech-pill">Client-Side PDF Engine</span>
+        <span class="tech-pill">PostgreSQL Ledger</span>
+        <span class="tech-pill">Tailwind CSS</span>
+        <span class="tech-pill">Vite</span>
+      </div>
+
+      <div class="btn-group">
+        <a href="https://pinkysales.in" target="_blank" rel="noopener noreferrer" class="btn btn-live">
+          <span>Launch Live App (pinkysales.in)</span>
+          <span>&rarr;</span>
+        </a>
+        <a href="../index.html#contact" class="btn btn-outline">Hire Lakshya for SaaS</a>
+      </div>
+    </header>
+
+    <!-- Key Live Metrics -->
+    <div class="metrics-bar">
+      <div class="metric-chip">
+        <span class="num">100%</span>
+        <span class="label">Live &amp; Operational</span>
+      </div>
+      <div class="metric-chip">
+        <span class="num">&lt;50ms</span>
+        <span class="label">Supabase Sync Latency</span>
+      </div>
+      <div class="metric-chip">
+        <span class="num">Zero</span>
+        <span class="label">Invoice Ledger Discrepancies</span>
+      </div>
+      <div class="metric-chip">
+        <span class="num">0.1s</span>
+        <span class="label">Instant PDF Generation</span>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         LIVE INTERACTIVE DEMO CONSOLE
+         ==================================================================== -->
+    <div class="demo-window">
+      <!-- Titlebar -->
+      <div class="window-titlebar">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-address">
+          <span style="color: #10b981;">🔒</span> https://pinkysales.in/app/pos-billing
+        </div>
+        <div style="font-family: var(--font-mono); font-size: 0.78rem; color: #94a3b8;">
+          Terminal: Main Store &bull; Cashier: Lakshya
+        </div>
+      </div>
+
+      <!-- App Header Nav & Switcher -->
+      <div class="app-nav">
+        <div class="app-brand">
+          <span style="color: var(--accent-pink);">✦</span> PINKY SALES SUITE
+        </div>
+        <div class="app-tabs">
+          <button class="tab-btn active" onclick="switchTab('pos', this)">POS Billing</button>
+          <button class="tab-btn" onclick="switchTab('inventory', this)">Live Inventory</button>
+          <button class="tab-btn" onclick="switchTab('customers', this)">Customer Ledgers</button>
+        </div>
+      </div>
+
+      <!-- Demo Body -->
+      <div class="demo-content-body">
+        
+        <!-- VIEW 1: POS Billing & Opening Balance Demo -->
+        <div id="viewPos" class="pos-layout">
+          <!-- Catalog on left -->
+          <div class="pos-catalog">
+            <div class="pos-subhead">
+              <span>Quick Product Selection</span>
+              <span style="font-size: 0.78rem; color: var(--text-muted); font-family: var(--font-mono);">Click to add to bill</span>
+            </div>
+            
+            <div class="catalog-grid">
+              <div class="product-item" onclick="addItem('Cotton Casual Shirt', 899, 'SHIRT-01')">
+                <div>
+                  <div class="prod-name">Cotton Casual Shirt</div>
+                  <div class="prod-sku">SKU: SHIRT-01</div>
+                </div>
+                <div class="prod-price">&#8377;899</div>
+              </div>
+
+              <div class="product-item" onclick="addItem('Classic Denim Jeans', 1499, 'JEAN-02')">
+                <div>
+                  <div class="prod-name">Classic Denim Jeans</div>
+                  <div class="prod-sku">SKU: JEAN-02</div>
+                </div>
+                <div class="prod-price">&#8377;1,499</div>
+              </div>
+
+              <div class="product-item" onclick="addItem('Tailored Slim Blazer', 3499, 'BLAZ-03')">
+                <div>
+                  <div class="prod-name">Tailored Slim Blazer</div>
+                  <div class="prod-sku">SKU: BLAZ-03</div>
+                </div>
+                <div class="prod-price">&#8377;3,499</div>
+              </div>
+
+              <div class="product-item" onclick="addItem('Pure Linen Trousers', 1299, 'TROU-04')">
+                <div>
+                  <div class="prod-name">Pure Linen Trousers</div>
+                  <div class="prod-sku">SKU: TROU-04</div>
+                </div>
+                <div class="prod-price">&#8377;1,299</div>
+              </div>
+
+              <div class="product-item" onclick="addItem('Genuine Leather Belt', 499, 'BELT-05')">
+                <div>
+                  <div class="prod-name">Genuine Leather Belt</div>
+                  <div class="prod-sku">SKU: BELT-05</div>
+                </div>
+                <div class="prod-price">&#8377;499</div>
+              </div>
+
+              <div class="product-item" onclick="addItem('Printed Silk Scarf', 650, 'SCARF-06')">
+                <div>
+                  <div class="prod-name">Printed Silk Scarf</div>
+                  <div class="prod-sku">SKU: SCARF-06</div>
+                </div>
+                <div class="prod-price">&#8377;650</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Active Invoice Cart on right -->
+          <div class="pos-invoice-panel">
+            <div>
+              <div class="customer-selector">
+                <label style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; font-family: var(--font-mono); display: block; margin-bottom: 4px;">Select Customer Account:</label>
+                <select id="custSelect" onchange="changeCustomer()">
+                  <option value="anand" data-balance="1850">Anand Sharma (Previous Balance: &#8377;1,850.00)</option>
+                  <option value="priya" data-balance="420">Priya Patel (Previous Balance: &#8377;420.00)</option>
+                  <option value="rohit" data-balance="3100">Rohit Verma (Previous Balance: &#8377;3,100.00)</option>
+                  <option value="walkin" data-balance="0">Walk-in Customer (Balance: &#8377;0.00)</option>
+                </select>
+              </div>
+
+              <!-- Cart items table -->
+              <div class="cart-table-wrap">
+                <table class="cart-table">
+                  <thead>
+                    <tr>
+                      <th>Item</th>
+                      <th>Qty</th>
+                      <th>Price</th>
+                      <th>Subtotal</th>
+                    </tr>
+                  </thead>
+                  <tbody id="cartBody">
+                    <!-- Populated by JS -->
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Financial Balance Breakdown -->
+              <div class="ledger-summary">
+                <div class="ledger-row">
+                  <span>Current Bill Subtotal:</span>
+                  <span id="lblSubtotal" style="font-family: var(--font-mono);">&#8377;0.00</span>
+                </div>
+                <div class="ledger-row">
+                  <span>GST (18%):</span>
+                  <span id="lblGst" style="font-family: var(--font-mono);">&#8377;0.00</span>
+                </div>
+                <div class="ledger-row highlight">
+                  <span>Customer Opening Balance (Due):</span>
+                  <span id="lblOpening" style="font-family: var(--font-mono);">&#8377;1,850.00</span>
+                </div>
+                <div class="ledger-row total-row">
+                  <span>Net Payable Amount:</span>
+                  <span class="net-amount" id="lblNetTotal">&#8377;1,850.00</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="invoice-actions">
+              <button class="btn-checkout" onclick="openInvoiceModal()">
+                <span>Generate Tax Invoice (PDF)</span>
+                <span>&rarr;</span>
+              </button>
+              <button class="btn-reset" onclick="resetCart()">Clear Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- VIEW 2: Live Inventory -->
+        <div id="viewInventory" style="display: none;">
+          <div class="inv-table-wrap">
+            <table class="inv-table">
+              <thead>
+                <tr>
+                  <th>SKU Code</th>
+                  <th>Product Name</th>
+                  <th>Category</th>
+                  <th>Cost Price</th>
+                  <th>Retail Price</th>
+                  <th>Stock In Hand</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="invBody">
+                <tr>
+                  <td style="font-family: var(--font-mono);">SHIRT-01</td>
+                  <td><strong>Cotton Casual Shirt</strong></td>
+                  <td>Apparel</td>
+                  <td>&#8377;520</td>
+                  <td>&#8377;899</td>
+                  <td id="stock-1" style="font-weight: 700;">48 Units</td>
+                  <td><span class="badge badge-in-stock">IN STOCK</span></td>
+                  <td><button class="qty-btn" style="width: auto; padding: 4px 10px;" onclick="restock(1)">+10 Restock</button></td>
+                </tr>
+                <tr>
+                  <td style="font-family: var(--font-mono);">JEAN-02</td>
+                  <td><strong>Classic Denim Jeans</strong></td>
+                  <td>Denim</td>
+                  <td>&#8377;850</td>
+                  <td>&#8377;1,499</td>
+                  <td id="stock-2" style="font-weight: 700;">12 Units</td>
+                  <td><span class="badge badge-low-stock">LOW STOCK</span></td>
+                  <td><button class="qty-btn" style="width: auto; padding: 4px 10px;" onclick="restock(2)">+10 Restock</button></td>
+                </tr>
+                <tr>
+                  <td style="font-family: var(--font-mono);">BLAZ-03</td>
+                  <td><strong>Tailored Slim Blazer</strong></td>
+                  <td>Formal</td>
+                  <td>&#8377;1,950</td>
+                  <td>&#8377;3,499</td>
+                  <td id="stock-3" style="font-weight: 700;">4 Units</td>
+                  <td><span class="badge badge-reorder">CRITICAL</span></td>
+                  <td><button class="qty-btn" style="width: auto; padding: 4px 10px;" onclick="restock(3)">+10 Restock</button></td>
+                </tr>
+                <tr>
+                  <td style="font-family: var(--font-mono);">TROU-04</td>
+                  <td><strong>Pure Linen Trousers</strong></td>
+                  <td>Bottomwear</td>
+                  <td>&#8377;720</td>
+                  <td>&#8377;1,299</td>
+                  <td id="stock-4" style="font-weight: 700;">36 Units</td>
+                  <td><span class="badge badge-in-stock">IN STOCK</span></td>
+                  <td><button class="qty-btn" style="width: auto; padding: 4px 10px;" onclick="restock(4)">+10 Restock</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- VIEW 3: Customer Ledgers -->
+        <div id="viewCustomers" style="display: none;">
+          <div class="ledger-cards-grid">
+            <div class="customer-card">
+              <h4>Anand Sharma</h4>
+              <p>ID: CUST-9021 &bull; Phone: +91 98210 44219</p>
+              <div class="balance-chip">
+                <span>Opening Balance:</span>
+                <strong style="color: #f59e0b;">&#8377;1,850.00</strong>
+              </div>
+              <div class="balance-chip">
+                <span>Last Payment:</span>
+                <span style="color: #10b981;">&#8377;2,000 (Yesterday)</span>
+              </div>
+              <a href="https://pinkysales.in" target="_blank" rel="noopener noreferrer" style="color: var(--accent-lime); font-size: 0.85rem; font-weight: 600; text-decoration: none;">View Ledger History in pinkysales.in &rarr;</a>
+            </div>
+
+            <div class="customer-card">
+              <h4>Priya Patel</h4>
+              <p>ID: CUST-7814 &bull; Phone: +91 98450 11928</p>
+              <div class="balance-chip">
+                <span>Opening Balance:</span>
+                <strong style="color: #10b981;">&#8377;420.00</strong>
+              </div>
+              <div class="balance-chip">
+                <span>Last Payment:</span>
+                <span style="color: #10b981;">&#8377;1,500 (3 days ago)</span>
+              </div>
+              <a href="https://pinkysales.in" target="_blank" rel="noopener noreferrer" style="color: var(--accent-lime); font-size: 0.85rem; font-weight: 600; text-decoration: none;">View Ledger History in pinkysales.in &rarr;</a>
+            </div>
+
+            <div class="customer-card">
+              <h4>Rohit Verma</h4>
+              <p>ID: CUST-6629 &bull; Phone: +91 99100 88273</p>
+              <div class="balance-chip">
+                <span>Opening Balance:</span>
+                <strong style="color: #ef4444;">&#8377;3,100.00</strong>
+              </div>
+              <div class="balance-chip">
+                <span>Last Payment:</span>
+                <span style="color: #94a3b8;">No recent payment</span>
+              </div>
+              <a href="https://pinkysales.in" target="_blank" rel="noopener noreferrer" style="color: var(--accent-lime); font-size: 0.85rem; font-weight: 600; text-decoration: none;">View Ledger History in pinkysales.in &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Architectural Deep Dive Cards -->
+    <section>
+      <h2 style="font-family: var(--font-heading); font-size: 2.2rem; text-align: center; margin-bottom: 36px;">
+        Engineering Rigor &amp; Technical Execution
+      </h2>
+      <div class="deep-dive-grid">
+        <div class="dive-card">
+          <div class="dive-icon">⚡</div>
+          <h3>Supabase Realtime Sync</h3>
+          <p>
+            Eliminates multi-terminal concurrency issues. When a cashier at terminal 1 scans an item or completes a bill, stock counts decrement across all devices in under 50 milliseconds via WebSocket channels.
+          </p>
+        </div>
+
+        <div class="dive-card">
+          <div class="dive-icon">📑</div>
+          <h3>Client-Side PDF Engine</h3>
+          <p>
+            Engineered with zero server dependency for printing. Instant tax invoices generate client-side in less than 100ms with thermal receipt formatting and standard A4/A5 business invoices.
+          </p>
+        </div>
+
+        <div class="dive-card">
+          <div class="dive-icon">⚖️</div>
+          <h3>Opening Balance &amp; Ledger Math</h3>
+          <p>
+            Designed specifically for wholesale and retail customers who purchase on credit. Incorporates past opening balance rollovers directly into new invoice settlements to guarantee zero accounting leakages.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final Call to Action -->
+    <div class="final-cta">
+      <h2>Experience Pinky Sales in Production</h2>
+      <p>
+        See how Lakshya Shah designs and builds high-velocity software for real businesses. Visit the live platform today at pinkysales.in.
+      </p>
+      <a href="https://pinkysales.in" target="_blank" rel="noopener noreferrer" class="btn btn-live">
+        Visit pinkysales.in ↗
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Interactive Tax Invoice PDF Modal -->
+  <div id="invoiceModal" class="modal-overlay">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeInvoiceModal()">&times;</button>
+      <div style="text-align: center; margin-bottom: 20px;">
+        <span style="font-family: var(--font-heading); font-size: 1.4rem; color: #fff; font-weight: 800;">PINKY SALES TAX INVOICE</span>
+        <div style="font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono); margin-top: 4px;">INV-#2026-0842 &bull; GSTIN: 27AABCP1234F1Z5</div>
+      </div>
+      
+      <div style="background: var(--card-inner); border-radius: 8px; padding: 14px; margin-bottom: 16px; font-size: 0.85rem;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+          <span style="color: var(--text-muted);">Customer:</span>
+          <strong id="modalCustName">Anand Sharma</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+          <span style="color: var(--text-muted);">Date:</span>
+          <span id="modalDate">Today</span>
+        </div>
+      </div>
+
+      <div id="modalItems" style="font-size: 0.85rem; margin-bottom: 16px; border-bottom: 1px solid var(--card-border); padding-bottom: 12px;">
+        <!-- Populated by JS -->
+      </div>
+
+      <div style="font-size: 0.9rem; margin-bottom: 24px;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+          <span>Items Subtotal:</span>
+          <span id="modalSubtotal" style="font-family: var(--font-mono); font-weight: 700;">&#8377;0.00</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+          <span>Opening Balance Due:</span>
+          <span id="modalOpening" style="font-family: var(--font-mono); color: #f59e0b;">&#8377;1,850.00</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 1.15rem; font-weight: 800; border-top: 1px dashed var(--card-border); padding-top: 8px; color: var(--accent-lime);">
+          <span>Total Balance Due:</span>
+          <span id="modalTotal" style="font-family: var(--font-mono);">&#8377;1,850.00</span>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 10px;">
+        <a href="https://pinkysales.in" target="_blank" rel="noopener noreferrer" class="btn btn-live" style="flex: 1; justify-content: center; padding: 10px;">
+          Open Live Invoicing at pinkysales.in ↗
+        </a>
+        <button class="btn btn-outline" onclick="closeInvoiceModal()" style="padding: 10px 18px;">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <footer style="text-align: center; padding: 40px 24px; border-top: 1px solid var(--card-border); background: #070a12;">
+    <p style="color: var(--text-muted); font-size: 0.9rem;">
+      Pinky Sales &bull; Developed &amp; Maintained by <strong style="color: #fff;">Lakshya Shah</strong>
+    </p>
+    <a href="../index.html#works" class="back-btn" style="margin-top: 14px; font-weight: 700;">&larr; Return to main portfolio</a>
+  </footer>
+
+  <script>
+    // Cart Data
+    let cart = [
+      { name: 'Cotton Casual Shirt', price: 899, qty: 1, sku: 'SHIRT-01' },
+      { name: 'Classic Denim Jeans', price: 1499, qty: 1, sku: 'JEAN-02' }
+    ];
+
+    let currentOpening = 1850;
+
+    function renderCart() {
+      const tbody = document.getElementById('cartBody');
+      tbody.innerHTML = '';
+
+      if (cart.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; color:#94a3b8; padding:20px;">No items selected. Click any item on the left to add!</td></tr>';
+        updateTotals(0);
+        return;
+      }
+
+      let subtotal = 0;
+      cart.forEach((item, idx) => {
+        const itemTotal = item.price * item.qty;
+        subtotal += itemTotal;
+
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td><strong>${item.name}</strong><br><span style="font-size:0.7rem; color:#94a3b8;">${item.sku}</span></td>
+          <td>
+            <button class="qty-btn" onclick="updateQty(${idx}, -1)">-</button>
+            <span style="font-weight:700; font-family:var(--font-mono);">${item.qty}</span>
+            <button class="qty-btn" onclick="updateQty(${idx}, 1)">+</button>
+          </td>
+          <td style="font-family:var(--font-mono);">&#8377;${item.price.toLocaleString()}</td>
+          <td style="font-family:var(--font-mono); font-weight:700;">&#8377;${itemTotal.toLocaleString()}</td>
+        `;
+        tbody.appendChild(row);
+      });
+
+      updateTotals(subtotal);
+    }
+
+    function updateTotals(subtotal) {
+      const gst = Math.round(subtotal * 0.18);
+      const grandTotal = subtotal + gst + currentOpening;
+
+      document.getElementById('lblSubtotal').innerHTML = `&#8377;${subtotal.toLocaleString()}`;
+      document.getElementById('lblGst').innerHTML = `&#8377;${gst.toLocaleString()}`;
+      document.getElementById('lblOpening').innerHTML = `&#8377;${currentOpening.toLocaleString()}`;
+      document.getElementById('lblNetTotal').innerHTML = `&#8377;${grandTotal.toLocaleString()}`;
+    }
+
+    function addItem(name, price, sku) {
+      const existing = cart.find(i => i.sku === sku);
+      if (existing) {
+        existing.qty++;
+      } else {
+        cart.push({ name, price, qty: 1, sku });
+      }
+      renderCart();
+    }
+
+    function updateQty(idx, delta) {
+      cart[idx].qty += delta;
+      if (cart[idx].qty <= 0) {
+        cart.splice(idx, 1);
+      }
+      renderCart();
+    }
+
+    function resetCart() {
+      cart = [];
+      renderCart();
+    }
+
+    function changeCustomer() {
+      const select = document.getElementById('custSelect');
+      const opt = select.options[select.selectedIndex];
+      currentOpening = parseInt(opt.getAttribute('data-balance'), 10) || 0;
+      renderCart();
+    }
+
+    function switchTab(tab, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      document.getElementById('viewPos').style.display = tab === 'pos' ? 'grid' : 'none';
+      document.getElementById('viewInventory').style.display = tab === 'inventory' ? 'block' : 'none';
+      document.getElementById('viewCustomers').style.display = tab === 'customers' ? 'block' : 'none';
+    }
+
+    function restock(id) {
+      const el = document.getElementById(`stock-${id}`);
+      let count = parseInt(el.textContent, 10);
+      count += 10;
+      el.textContent = `${count} Units`;
+    }
+
+    function openInvoiceModal() {
+      const modal = document.getElementById('invoiceModal');
+      const select = document.getElementById('custSelect');
+      const opt = select.options[select.selectedIndex];
+      
+      document.getElementById('modalCustName').textContent = opt.text.split('(')[0];
+      document.getElementById('modalDate').textContent = new Date().toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' });
+
+      let itemsHtml = '';
+      let subtotal = 0;
+      cart.forEach(item => {
+        const itemTot = item.price * item.qty;
+        subtotal += itemTot;
+        itemsHtml += `<div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+          <span>${item.qty}x ${item.name}</span>
+          <span style="font-family:var(--font-mono);">&#8377;${itemTot.toLocaleString()}</span>
+        </div>`;
+      });
+
+      const gst = Math.round(subtotal * 0.18);
+      const total = subtotal + gst + currentOpening;
+
+      document.getElementById('modalItems').innerHTML = itemsHtml || '<div style="color:#94a3b8;">No items in cart</div>';
+      document.getElementById('modalSubtotal').innerHTML = `&#8377;${subtotal.toLocaleString()}`;
+      document.getElementById('modalOpening').innerHTML = `&#8377;${currentOpening.toLocaleString()}`;
+      document.getElementById('modalTotal').innerHTML = `&#8377;${total.toLocaleString()}`;
+
+      modal.classList.add('active');
+    }
+
+    function closeInvoiceModal() {
+      document.getElementById('invoiceModal').classList.remove('active');
+    }
+
+    // Initialize on page load
+    renderCart();
+  </script>
+
+</body>
+</html>
