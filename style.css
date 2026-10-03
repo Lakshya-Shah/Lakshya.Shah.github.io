@@ -285,6 +285,15 @@ ul[role="list"] {
   height: 100%;
 }
 
+.nav-brand-heading {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
 .nav-brand {
   display: flex;
   align-items: center;
@@ -760,11 +769,16 @@ ul[role="list"] {
   border-bottom: 1px solid var(--border-subtle);
 }
 
+.about-header-flex {
+  margin-bottom: 24px;
+}
+
 .about-hero-quote {
   margin-bottom: clamp(40px, 6vw, 70px);
 }
 
-.about-hero-quote h2 {
+.about-hero-quote h2,
+.about-quote-lead {
   font-family: var(--font-heading);
   font-size: clamp(2.4rem, 5vw, 4.5rem);
   font-weight: 800;
@@ -772,6 +786,12 @@ ul[role="list"] {
   line-height: 1.08;
   max-width: 1050px;
   color: var(--text-main);
+}
+
+.anchor-alias {
+  position: absolute;
+  top: -80px;
+  visibility: hidden;
 }
 
 .about-content-grid {

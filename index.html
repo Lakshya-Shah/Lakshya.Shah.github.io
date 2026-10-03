@@ -29,18 +29,20 @@
   <!-- STICKY NAVBAR -->
   <header class="site-header" id="header">
     <nav class="navbar container" aria-label="Main Navigation">
-      <a href="#home" class="nav-brand" aria-label="Home">
-        <span class="brand-name">Lakshya Shah</span>
-        <span class="status-indicator">
-          <span class="status-dot"></span>
-          <span class="status-text">Available</span>
-        </span>
-      </a>
+      <h1 class="nav-brand-heading">
+        <a href="#home" class="nav-brand" aria-label="Lakshya Shah — Personal Site">
+          <span class="brand-name">Lakshya Shah</span>
+          <span class="status-indicator">
+            <span class="status-dot"></span>
+            <span class="status-text">Available</span>
+          </span>
+        </a>
+      </h1>
 
       <ul class="nav-links" id="navLinks" role="list">
         <li><a href="#home" class="nav-link active">Home</a></li>
         <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#works" class="nav-link">Works</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
         <li><a href="#services" class="nav-link">Services</a></li>
         <li><a href="#testimonials" class="nav-link">Praise</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
@@ -77,10 +79,10 @@
           <div class="hero-role">Web Developer &amp; UI Designer</div>
         </div>
 
-        <h1 class="hero-headline">
+        <div class="hero-headline" role="heading" aria-level="2">
           <span class="line-1">I design clarity.</span>
           <span class="line-2">I build growth.</span>
-        </h1>
+        </div>
 
         <div class="hero-grid">
           <!-- Left: Subtext, Social Proof & CTAs -->
@@ -102,7 +104,7 @@
             </div>
 
             <div class="hero-cta-group">
-              <a href="#works" class="btn btn-pill btn-dark">
+              <a href="#projects" class="btn btn-pill btn-dark">
                 <span>View Selected Work</span>
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                   <path d="M6 2.5V9.5M6 9.5L9.5 6M6 9.5L2.5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -199,11 +201,15 @@
         
         <div class="section-label">
           <span class="section-number">01</span>
-          <span class="section-tag">PHILOSOPHY &amp; BACKGROUND</span>
+          <span class="section-tag">ABOUT ME &bull; BACKGROUND</span>
+        </div>
+
+        <div class="about-header-flex">
+          <h2 class="section-title">About Me</h2>
         </div>
 
         <div class="about-hero-quote">
-          <h2>&ldquo;Design is not decoration. It is direction.&rdquo;</h2>
+          <p class="about-quote-lead">&ldquo;Design is not decoration. It is direction.&rdquo;</p>
         </div>
 
         <div class="about-content-grid">
@@ -265,18 +271,19 @@
       </div>
     </section>
 
-    <!-- 3. FEATURED WORK SECTION (DIRECT LINKS TO INTERACTIVE PROJECTS) -->
-    <section class="works-section" id="works">
+    <!-- 3. FEATURED PROJECTS SECTION (DIRECT LINKS TO INTERACTIVE PROJECTS) -->
+    <section class="works-section" id="projects">
+      <span id="works" class="anchor-alias" aria-hidden="true"></span>
       <div class="container">
 
         <div class="works-header">
           <div class="section-label">
             <span class="section-number">02</span>
-            <span class="section-tag">SELECTED WORKS</span>
+            <span class="section-tag">PROJECTS &bull; SELECTED WORKS</span>
           </div>
           <div class="works-header-flex">
-            <h2 class="section-title">Case studies built with intention.</h2>
-            <p class="section-subtext">Click any project to explore its live, fully interactive showcase built by Lakshya Shah.</p>
+            <h2 class="section-title">Projects</h2>
+            <p class="section-subtext">Case studies &amp; live interactive web applications built with intention by Lakshya Shah.</p>
           </div>
         </div>
 
@@ -667,7 +674,7 @@
             <ul class="footer-nav" role="list">
               <li><a href="#home">Home</a></li>
               <li><a href="#about">About</a></li>
-              <li><a href="#works">Selected Works</a></li>
+              <li><a href="#projects">Projects</a></li>
               <li><a href="#services">Services</a></li>
               <li><a href="#testimonials">Testimonials</a></li>
               <li><a href="#contact">Contact</a></li>
