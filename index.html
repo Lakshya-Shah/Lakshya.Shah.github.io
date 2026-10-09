@@ -23,34 +23,52 @@
 </head>
 <body>
 
+  <!-- Top Scroll Progress Bar -->
+  <div class="scroll-progress-bar" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- Ambient Aurora Glow Canvas -->
+  <div class="ambient-glow-container" aria-hidden="true">
+    <div class="ambient-glow-orb orb-1"></div>
+    <div class="ambient-glow-orb orb-2"></div>
+    <div class="ambient-glow-orb orb-3"></div>
+  </div>
+
+  <!-- Interactive Spotlight Follower -->
+  <div class="cursor-spotlight" id="cursorSpotlight" aria-hidden="true"></div>
+
   <!-- Subtle Film Grain Texture Overlay -->
   <div class="grain-overlay" aria-hidden="true"></div>
 
-  <!-- STICKY NAVBAR -->
+  <!-- STICKY FLOATING COMMAND DOCK NAVBAR -->
   <header class="site-header" id="header">
     <nav class="navbar container" aria-label="Main Navigation">
-      <h1 class="nav-brand-heading">
-        <a href="#home" class="nav-brand" aria-label="Lakshya Shah — Personal Site">
-          <span class="brand-name">Lakshya Shah</span>
-          <span class="status-indicator">
-            <span class="status-dot"></span>
-            <span class="status-text">Available</span>
-          </span>
-        </a>
-      </h1>
+      <div class="nav-brand-wrap">
+        <h1 class="nav-brand-heading">
+          <a href="#home" class="nav-brand" aria-label="Lakshya Shah — Personal Site">
+            <span class="brand-monogram">LS</span>
+            <span class="brand-name">Lakshya Shah</span>
+          </a>
+        </h1>
+        <div class="status-indicator" title="Open for remote projects &amp; collaborations">
+          <span class="status-dot"></span>
+          <span class="status-text">Available</span>
+        </div>
+      </div>
 
-      <ul class="nav-links" id="navLinks" role="list">
-        <li><a href="#home" class="nav-link active">Home</a></li>
-        <li><a href="#about-myself" class="nav-link">About Myself</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#photography" class="nav-link">Photography</a></li>
-        <li><a href="#services" class="nav-link">Services</a></li>
-        <li><a href="#testimonials" class="nav-link">Praise</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-      </ul>
+      <div class="nav-center-dock">
+        <ul class="nav-links" id="navLinks" role="list">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#about-myself" class="nav-link">About Myself</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#photography" class="nav-link">Photography</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#testimonials" class="nav-link">Praise</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
 
       <div class="nav-actions">
-        <a href="#contact" class="btn btn-pill btn-primary talk-btn">
+        <a href="#contact" class="btn btn-pill btn-primary talk-btn" aria-label="Let's Talk">
           <span>Let's Talk</span>
           <svg class="btn-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1499,6 +1517,44 @@
   <script>
     // Update copyright year dynamically
     document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // Scroll Progress Bar Update
+    const scrollProgress = document.getElementById('scrollProgress');
+    window.addEventListener('scroll', () => {
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (docHeight > 0 && scrollProgress) {
+        const progress = (window.scrollY / docHeight) * 100;
+        scrollProgress.style.width = `${progress}%`;
+      }
+    }, { passive: true });
+
+    // Interactive Cursor Spotlight
+    const cursorSpotlight = document.getElementById('cursorSpotlight');
+    if (cursorSpotlight && window.matchMedia('(hover: hover)').matches) {
+      window.addEventListener('mousemove', (e) => {
+        cursorSpotlight.style.left = `${e.clientX}px`;
+        cursorSpotlight.style.top = `${e.clientY}px`;
+      }, { passive: true });
+    }
+
+    // Smooth Scroll Reveal System
+    const revealTargets = document.querySelectorAll('.can-do-card, .photo-card, .arsenal-card, .matrix-card, .personal-fact-card, .principles-card, .availability-banner, .project-card, .service-row, .testimonial-card');
+    revealTargets.forEach(el => el.classList.add('reveal-element'));
+
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      revealTargets.forEach(el => revealObserver.observe(el));
+    } else {
+      revealTargets.forEach(el => el.classList.add('is-revealed'));
+    }
 
     // Mobile Navigation Toggle
     const menuToggle = document.getElementById('menuToggle');
