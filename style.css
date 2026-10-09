@@ -285,69 +285,64 @@ ul[role="list"] {
   pointer-events: none;
   z-index: 0;
   overflow: hidden;
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 .ambient-glow-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(100px);
+  filter: blur(85px);
   pointer-events: none;
-  mix-blend-mode: multiply;
-  animation: floatOrb 22s ease-in-out infinite alternate;
+  animation: floatOrb 18s ease-in-out infinite alternate;
 }
 
 .orb-1 {
-  width: 520px;
-  height: 520px;
-  background: radial-gradient(circle, rgba(212, 255, 63, 0.35) 0%, rgba(212, 255, 63, 0) 70%);
-  top: -120px;
+  width: 580px;
+  height: 580px;
+  background: radial-gradient(circle, rgba(212, 255, 63, 0.45) 0%, rgba(212, 255, 63, 0.05) 60%, transparent 75%);
+  top: -100px;
   left: -80px;
-  animation-duration: 20s;
+  animation-duration: 16s;
 }
 
 .orb-2 {
-  width: 620px;
-  height: 620px;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.22) 0%, rgba(16, 185, 129, 0) 70%);
-  top: 35%;
-  right: -160px;
-  animation-duration: 26s;
-  animation-delay: -6s;
+  width: 660px;
+  height: 660px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.32) 0%, rgba(16, 185, 129, 0.05) 60%, transparent 75%);
+  top: 30%;
+  right: -120px;
+  animation-duration: 22s;
+  animation-delay: -4s;
 }
 
 .orb-3 {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(251, 191, 36, 0.28) 0%, rgba(251, 191, 36, 0) 70%);
-  bottom: 8%;
-  left: 15%;
-  animation-duration: 22s;
-  animation-delay: -12s;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.38) 0%, rgba(251, 191, 36, 0.05) 60%, transparent 75%);
+  bottom: 5%;
+  left: 18%;
+  animation-duration: 18s;
+  animation-delay: -8s;
 }
 
 @keyframes floatOrb {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(70px, 50px) scale(1.12); }
-  100% { transform: translate(-50px, 80px) scale(0.94); }
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  50% { transform: translate(80px, 60px) scale(1.15) rotate(10deg); }
+  100% { transform: translate(-60px, 90px) scale(0.92) rotate(-8deg); }
 }
 
 /* Interactive Spotlight Cursor Follower */
 .cursor-spotlight {
   position: fixed;
-  width: 550px;
-  height: 550px;
+  width: 520px;
+  height: 520px;
   border-radius: 50%;
   pointer-events: none;
-  background: radial-gradient(circle, rgba(212, 255, 63, 0.08) 0%, rgba(212, 255, 63, 0) 65%);
+  background: radial-gradient(circle, rgba(212, 255, 63, 0.22) 0%, rgba(16, 185, 129, 0.08) 35%, transparent 70%);
   transform: translate(-50%, -50%);
-  z-index: 1;
-  transition: opacity 0.4s ease;
+  z-index: 99;
+  transition: opacity 0.3s ease;
   opacity: 0;
-}
-
-body:hover .cursor-spotlight {
-  opacity: 1;
 }
 
 /* Sticky Header */
@@ -3198,10 +3193,11 @@ a.info-value:hover {
 /* --------------------------------------------------------------------------
    16. ADVANCED MOTION & INTERACTION UTILITIES
    -------------------------------------------------------------------------- */
+/* Scroll-Driven Reveal System */
 .reveal-element {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(32px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
@@ -3210,30 +3206,135 @@ a.info-value:hover {
   transform: translateY(0);
 }
 
-/* Photo Card Interactive Elevation */
-.photo-card {
-  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-fast);
+/* "What I Can Do" Cards Hover Sheen & Lift (-8px) */
+.can-do-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
 }
 
-.photo-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
-  border-color: rgba(17, 17, 17, 0.25);
+.can-do-card::before {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 220%;
+  height: 220%;
+  background: linear-gradient(
+    45deg,
+    transparent 42%,
+    rgba(212, 255, 63, 0.28) 49%,
+    rgba(255, 255, 255, 0.6) 51%,
+    transparent 58%
+  );
+  transform: rotate(-30deg) translateY(-120%);
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 2;
 }
 
-.photo-card:hover .photo-img {
-  transform: scale(1.06);
+.can-do-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 48px rgba(17, 17, 17, 0.1);
+  border-color: rgba(17, 17, 17, 0.28);
 }
 
-/* Arsenal Chip Interactive Bounce & Glow */
+.can-do-card:hover::before {
+  transform: rotate(-30deg) translateY(120%);
+}
+
+/* Service Icons Dynamic Rotation & Lime Glow (rotate 6deg + accent bg) */
+.service-row {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-row:hover {
+  transform: translateY(-4px);
+}
+
+.service-index {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease, color 0.25s ease, box-shadow 0.35s ease;
+}
+
+.service-row:hover .service-index {
+  transform: scale(1.12) rotate(6deg);
+  background-color: var(--accent);
+  color: var(--accent-dark);
+  box-shadow: 0 4px 16px rgba(212, 255, 63, 0.5);
+}
+
+.can-do-icon-wrap {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease, box-shadow 0.35s ease, border-color 0.25s ease;
+}
+
+.can-do-card:hover .can-do-icon-wrap {
+  transform: scale(1.15) rotate(6deg);
+  background-color: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 8px 20px rgba(212, 255, 63, 0.6);
+}
+
+/* Arsenal Chips Interactive Bounce & Category Tool Highlighting */
 .arsenal-chip {
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s, border-color 0.25s, background-color 0.25s;
+  cursor: pointer;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, background-color 0.25s ease;
 }
 
 .arsenal-chip:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  border-color: var(--accent-dark);
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+  border-color: var(--text-main);
+  background-color: #ffffff;
+}
+
+.chip-icon-badge {
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, background-color 0.25s ease, color 0.25s ease;
+}
+
+.arsenal-chip:hover .chip-icon-badge {
+  transform: scale(1.14) rotate(4deg);
+}
+
+.arsenal-chip:hover .chip-icon-html { background: #e34f26; color: #fff; box-shadow: 0 4px 14px rgba(227, 79, 38, 0.4); }
+.arsenal-chip:hover .chip-icon-css { background: #1572b6; color: #fff; box-shadow: 0 4px 14px rgba(21, 114, 182, 0.4); }
+.arsenal-chip:hover .chip-icon-js { background: #f7df1e; color: #000; box-shadow: 0 4px 14px rgba(247, 223, 30, 0.4); }
+.arsenal-chip:hover .chip-icon-git { background: #f05032; color: #fff; box-shadow: 0 4px 14px rgba(240, 80, 50, 0.4); }
+.arsenal-chip:hover .chip-icon-perf { background: #10b981; color: #fff; box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4); }
+.arsenal-chip:hover .chip-icon-figma { background: #a259ff; color: #fff; box-shadow: 0 4px 14px rgba(162, 89, 255, 0.4); }
+.arsenal-chip:hover .chip-icon-tokens { background: #6366f1; color: #fff; box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4); }
+.arsenal-chip:hover .chip-icon-type { background: #111111; color: #d4ff3f; box-shadow: 0 4px 14px rgba(17, 17, 17, 0.4); }
+.arsenal-chip:hover .chip-icon-ps { background: #001e36; color: #31a8ff; border: 1px solid #31a8ff; box-shadow: 0 4px 14px rgba(49, 168, 255, 0.45); }
+.arsenal-chip:hover .chip-icon-lr { background: #001e36; color: #31a8ff; border: 1px solid #31a8ff; box-shadow: 0 4px 14px rgba(49, 168, 255, 0.45); }
+.arsenal-chip:hover .chip-icon-color { background: #8b5cf6; color: #fff; box-shadow: 0 4px 14px rgba(139, 92, 246, 0.4); }
+.arsenal-chip:hover .chip-icon-photo { background: #10b981; color: #fff; box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4); }
+
+/* Photography Gallery Hover Polish: 3D Shadow (-8px) & Subtle Image Zoom (1.07) */
+.photo-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
+
+.photo-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.15);
+  border-color: rgba(17, 17, 17, 0.3);
+}
+
+.photo-card .photo-img {
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.photo-card:hover .photo-img {
+  transform: scale(1.07);
+}
+
+.photo-card .photo-badge-suite {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.photo-card:hover .photo-badge-suite {
+  transform: translateY(-4px);
 }
 
 /* Interactive Badges */

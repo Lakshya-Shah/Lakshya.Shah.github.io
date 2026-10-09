@@ -1534,7 +1534,12 @@
       window.addEventListener('mousemove', (e) => {
         cursorSpotlight.style.left = `${e.clientX}px`;
         cursorSpotlight.style.top = `${e.clientY}px`;
+        cursorSpotlight.style.opacity = '1';
       }, { passive: true });
+
+      document.addEventListener('mouseleave', () => {
+        cursorSpotlight.style.opacity = '0';
+      });
     }
 
     // Smooth Scroll Reveal System
