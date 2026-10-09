@@ -399,30 +399,32 @@ ul[role="list"] {
 }
 
 .brand-monogram {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   border-radius: 11px;
-  background-color: #ffffff;
+  background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(17, 17, 17, 0.08);
-  border: 1px solid var(--border-subtle);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
-  padding: 4px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+  border: none;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
+  padding: 0;
+  overflow: hidden;
 }
 
 .brand-logo-img {
-  width: 26px;
-  height: 26px;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   display: block;
+  border-radius: 11px;
 }
 
 .nav-brand:hover .brand-monogram {
-  transform: rotate(-6deg) scale(1.08);
-  border-color: #9ee616;
-  box-shadow: 0 6px 18px rgba(158, 230, 22, 0.45);
+  transform: rotate(-4deg) scale(1.08);
+  box-shadow: 0 8px 22px rgba(212, 255, 63, 0.32);
+  filter: drop-shadow(0 4px 12px rgba(212, 255, 63, 0.4));
 }
 
 .brand-name {
@@ -2823,8 +2825,35 @@ a.info-value:hover {
   font-weight: 800;
   letter-spacing: -0.03em;
   color: var(--text-main);
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
   margin-bottom: 12px;
+}
+
+.footer-brand-monogram {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
+  overflow: hidden;
+  transition: transform var(--transition-fast), filter var(--transition-fast);
+}
+
+.footer-brand-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 10px;
+}
+
+.footer-brand:hover .footer-brand-monogram {
+  transform: scale(1.08) rotate(-4deg);
+  filter: drop-shadow(0 4px 12px rgba(212, 255, 63, 0.45));
 }
 
 .footer-tagline {

@@ -20,8 +20,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  
+  <!-- Favicon & Mobile Icons (Square 1:1 Aspect Ratio for Google Search & High-DPI Screens) -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" sizes="any">
   <link rel="shortcut icon" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#0d1117">
+  <meta name="msapplication-TileColor" content="#0d1117">
 </head>
 <body>
 
@@ -1530,7 +1536,12 @@
       
       <div class="footer-top">
         <div class="footer-brand-col">
-          <a href="#home" class="footer-brand">Lakshya Shah</a>
+          <a href="#home" class="footer-brand" aria-label="Lakshya Shah — Back to Top">
+            <span class="footer-brand-monogram">
+              <img src="favicon.svg" alt="Lakshya Shah Logo" class="footer-brand-logo-img">
+            </span>
+            <span>Lakshya Shah</span>
+          </a>
           <p class="footer-tagline">
             11th Standard Student, Creative Developer &amp; Visual Artist based in Surat, working remotely with clients worldwide.
           </p>

@@ -1,38 +1,91 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="90 80 320 220" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
   <defs>
-    <style>
-      .cam-line { fill: none; stroke: #111111; stroke-width: 18; stroke-linecap: round; stroke-linejoin: round; }
-      .bracket { fill: none; stroke: #9ee616; stroke-width: 20; stroke-linecap: round; stroke-linejoin: round; }
-      .shutter-blade { fill: #1c1c1c; stroke: #ffffff; stroke-width: 2.5; }
-      .shutter-center { fill: #9ee616; }
-    </style>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1c212d" />
+      <stop offset="45%" stop-color="#12161f" />
+      <stop offset="100%" stop-color="#0a0c10" />
+    </linearGradient>
+
+    <!-- Squircle Border Stroke Gradient -->
+    <linearGradient id="borderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b475e" />
+      <stop offset="50%" stop-color="#242b38" />
+      <stop offset="100%" stop-color="#13171f" />
+    </linearGradient>
+
+    <!-- Neon Lime Glow Gradient -->
+    <radialGradient id="neonAmbientGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#d4ff3f" stop-opacity="0.32" />
+      <stop offset="60%" stop-color="#d4ff3f" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#d4ff3f" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Aperture Ring Gradient -->
+    <linearGradient id="limeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#eeff82" />
+      <stop offset="50%" stop-color="#d4ff3f" />
+      <stop offset="100%" stop-color="#8be604" />
+    </linearGradient>
+
+    <!-- Neon Filter Glow -->
+    <filter id="limeGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <filter id="bracketGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.6" />
+    </filter>
   </defs>
 
-  <!-- Top Camera Body Arch & Shoulders -->
-  <path class="cam-line" d="M 120 180 L 120 155 C 120 142 130 132 142 132 L 180 132 L 206 106 L 294 106 L 320 132 L 358 132 C 370 132 380 142 380 155 L 380 180" />
+  <!-- 1. Squircle Dark Badge Base (1:1 Square Container for High-DPI & Google Search) -->
+  <rect x="20" y="20" width="472" height="472" rx="112" fill="url(#bgGradient)" stroke="url(#borderGradient)" stroke-width="4.5" />
 
-  <!-- Bottom Camera Body Frame -->
-  <path class="cam-line" d="M 380 230 L 380 255 C 380 268 370 278 358 278 L 142 278 C 130 278 120 268 120 255 L 120 230" />
+  <!-- 2. Ambient Inner Neon Backlight -->
+  <circle cx="256" cy="256" r="185" fill="url(#neonAmbientGlow)" />
 
-  <!-- Code Bracket Left < -->
-  <path class="bracket" d="M 152 178 L 118 205 L 152 232" />
+  <!-- 3. Outer Camera Lens Mechanical Ring -->
+  <circle cx="256" cy="256" r="142" fill="none" stroke="#252c38" stroke-width="8" />
+  <circle cx="256" cy="256" r="134" fill="#0d1017" stroke="url(#limeGrad)" stroke-width="4.5" stroke-dasharray="14 7" opacity="0.85" />
 
-  <!-- Code Bracket Right > -->
-  <path class="bracket" d="M 348 178 L 382 205 L 348 232" />
+  <!-- 4. Dynamic Camera Shutter Aperture Blades (6 Interlocking Blades) -->
+  <g transform="translate(256, 256)">
+    <!-- Blade 1 (0 deg) -->
+    <path d="M 0,-130 A 130,130 0 0,1 112.5,-65 L 44,-16 L 0,-52 Z" fill="#151a24" stroke="#d4ff3f" stroke-width="2.8" stroke-linejoin="round" />
+    <!-- Blade 2 (60 deg) -->
+    <path d="M 112.5,-65 A 130,130 0 0,1 112.5,65 L 36,32 L 44,-16 Z" fill="#181e29" stroke="#d4ff3f" stroke-width="2.8" stroke-linejoin="round" />
+    <!-- Blade 3 (120 deg) -->
+    <path d="M 112.5,65 A 130,130 0 0,1 0,130 L -8,48 L 36,32 Z" fill="#151a24" stroke="#d4ff3f" stroke-width="2.8" stroke-linejoin="round" />
+    <!-- Blade 4 (180 deg) -->
+    <path d="M 0,130 A 130,130 0 0,1 -112.5,65 L -44,16 L -8,48 Z" fill="#181e29" stroke="#d4ff3f" stroke-width="2.8" stroke-linejoin="round" />
+    <!-- Blade 5 (240 deg) -->
+    <path d="M -112.5,65 A 130,130 0 0,1 -112.5,-65 L -36,-32 L -44,16 Z" fill="#151a24" stroke="#d4ff3f" stroke-width="2.8" stroke-linejoin="round" />
+    <!-- Blade 6 (300 deg) -->
+    <path d="M -112.5,-65 A 130,130 0 0,1 0,-130 L 8,-48 L -36,-32 Z" fill="#181e29" stroke="#d4ff3f" stroke-width="2.8" stroke-linejoin="round" />
+  </g>
 
-  <!-- Center Aperture Lens (Outer Circle) -->
-  <circle cx="250" cy="205" r="54" fill="#181818" />
+  <!-- 5. Center Iris Core Disc -->
+  <circle cx="256" cy="256" r="62" fill="#0d1118" stroke="url(#limeGrad)" stroke-width="4.5" />
 
-  <!-- Aperture Blades (6 Blades) -->
-  <g transform="translate(250, 205)">
-    <path class="shutter-blade" d="M 0,-54 A 54,54 0 0,1 46.7,-27 L 18,-6 L 0,-21 Z" />
-    <path class="shutter-blade" d="M 46.7,-27 A 54,54 0 0,1 46.7,27 L 14,14 L 18,-6 Z" />
-    <path class="shutter-blade" d="M 46.7,27 A 54,54 0 0,1 0,54 L -4,20 L 14,14 Z" />
-    <path class="shutter-blade" d="M 0,54 A 54,54 0 0,1 -46.7,27 L -18,6 L -4,20 Z" />
-    <path class="shutter-blade" d="M -46.7,27 A 54,54 0 0,1 -46.7,-27 L -14,-14 L -18,6 Z" />
-    <path class="shutter-blade" d="M -46.7,-27 A 54,54 0 0,1 0,-54 L 4,-20 L -14,-14 Z" />
+  <!-- 6. Stylized Monogram "LS" in Center Iris (Precision Vectors) -->
+  <!-- "L" in Electric Neon Lime -->
+  <path d="M 218 222 L 218 286 L 246 286" fill="none" stroke="#d4ff3f" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" />
+  <!-- "S" in Crisp Diamond White with Subtle Lime Junction -->
+  <path d="M 292 232 C 292 223 282 222 272 222 C 259 222 254 229 254 239 C 254 253 273 256 284 260 C 296 264 300 271 300 280 C 300 291 289 298 273 298 C 260 298 251 292 250 282" fill="none" stroke="#ffffff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
 
-    <!-- Center Lime Hexagon Iris -->
-    <polygon class="shutter-center" points="0,-18 16,-9 16,9 0,18 -16,9 -16,-9" />
+  <!-- 7. Framing Code Brackets "<" and ">" (Creative Developer Signature) -->
+  <!-- Left Bracket < -->
+  <g filter="url(#bracketGlow)">
+    <path d="M 94 202 L 48 256 L 94 310" fill="none" stroke="#ffffff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" />
+    <!-- Bracket Accent Dots -->
+    <circle cx="48" cy="256" r="3.5" fill="#d4ff3f" />
+  </g>
+
+  <!-- Right Bracket > -->
+  <g filter="url(#bracketGlow)">
+    <path d="M 418 202 L 464 256 L 418 310" fill="none" stroke="#ffffff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" />
+    <!-- Bracket Accent Dots -->
+    <circle cx="464" cy="256" r="3.5" fill="#d4ff3f" />
   </g>
 </svg>

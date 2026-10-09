@@ -1,0 +1,17 @@
+{
+  "name": "Lakshya Shah — Creative Developer, UI Designer & Visual Photographer",
+  "short_name": "Lakshya Shah",
+  "description": "Portfolio of Lakshya Shah — Creative Developer, UI Designer, and Visual Photographer.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0c10",
+  "theme_color": "#0d1117",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
