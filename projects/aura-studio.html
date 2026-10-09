@@ -363,6 +363,14 @@
       .stats-container { grid-template-columns: repeat(2, 1fr); }
       .banner-card { height: 360px; }
     }
+    @media (max-width: 600px) {
+      .top-bar { padding: 10px 16px; flex-wrap: wrap; gap: 8px; font-size: 0.82rem; }
+      .studio-nav { padding: 16px; }
+      .hero { padding: 48px 16px; }
+      .hero-title { font-size: clamp(2rem, 9vw, 3rem); }
+      .stats-container { grid-template-columns: 1fr; }
+      .banner-card { height: 260px; }
+    }
   </style>
 </head>
 <body>
